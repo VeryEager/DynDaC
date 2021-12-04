@@ -14,14 +14,16 @@ PURSE_MAX = 7.5
 CITIES_PER = 1
 
 # Load relevant TXT files
-strat = open(PATH + "descr_strat.txt", "r")
-strat = strat.read()
+d_strat = open(PATH + "descr_strat.txt", "r")
+d_strat = d_strat.read()
+d_regions = open(PATH + "descr_regions.txt", "r")
+d_regions = d_regions.read()
 
 # Load TGA maps
-regions = Image.open(PATH+"map_regions.tga")  # Need for settlement location information
-regions = ImageOps.flip(regions)
-ground_types = Image.open(PATH+"map_ground_types.tga")  # To track valid/invalid tiles
-ground_types = ImageOps.flip(ground_types)
+m_regions = Image.open(PATH + "map_regions.tga")  # Need for settlement location information
+m_regions = ImageOps.flip(m_regions)
+m_ground_types = Image.open(PATH + "map_ground_types.tga")  # To track valid/invalid tiles
+m_ground_types = ImageOps.flip(m_ground_types)
 
 
 def split_strat_fac(desc_strat):
@@ -43,8 +45,8 @@ def split_strat_reg_char(faction):
     :param faction:
     :return: Faction Info, Settlements[], Characters[], Family
     """
-    split = re.split(r"(\bsettlement)|(\bcharacter\s)", faction)
-    info = [s for s in split if s is not None]
+    strat = re.split(r"(\bsettlement)|(\bcharacter\s)", faction)
+    info = [s for s in strat if s is not None]
     info = [x[0]+x[1] for x in zip(info[1::2], info[2::2])]
 
     family = info[-1].split("character_record", 1)  # Save info on family relationships
@@ -54,16 +56,14 @@ def split_strat_reg_char(faction):
     else:
         family = ""
 
-    # TODO: Drop Admirals
-
     settlements = [s for s in info if "character" not in s]  # Split into provinces/characters respectively
-    characters = [s for s in info if "settlement" not in s]
+    characters = [s for s in info if "settlement" or "admiral" not in s]  # also need to drop admirals
 
-    return split[0], settlements, characters, family
+    return strat[0], settlements, characters, family
 
 
 # Split descr_strat into faction sections & diplomacy/campaign
-Campaign, Split_Factions, Diplomacy = split_strat_fac(strat)
+Campaign, Split_Factions, Diplomacy = split_strat_fac(d_strat)
 Invariants = Split_Factions[-3:-1]
 del Split_Factions[-3]
 del Split_Factions[-2]
@@ -94,6 +94,105 @@ def assign_settlements(s, f):
 
     # Add all remaining settlements to rebels
     f[-1].append(remaining_s)
+
+
+def name_from_text(text):
+    """
+    Parses the name of a region from its descr_strat entry
+
+    :param text: original descr_start text
+    :return: string form of the region's name
+    """
+    region = re.split(r"(\bregion\s(?i)[a-z_]+Province)", text)
+    region = region[1].split()
+    return region[1]
+
+
+def colour_from_name(name):
+    """
+    Retrieves the colour pf a region from its name via descr_regions
+
+    :param name: name of the province
+    :return: RGB of the province on map_regions
+    """
+    parsed = d_regions.split(name)
+    print(parsed[2])
+    parsed = re.split(r"([0-9]+\s[0-9]+\s[0-9]+\s)", parsed[1])
+    print(parsed)
+    r, g, b = parsed[1].split()
+    return int(r), int(g), int(b)
+
+
+def pixel_map(mp):
+    """
+    Extracts the pixel values from the TGA
+
+    :param mp: the map to extract the values from
+    :return:
+    """
+    width, height = mp.size
+    mp = mp.load()
+
+    pixels = []
+    for x in range(width):
+        row = []
+        for y in range(height):
+            pixel = mp[x, y]
+            row.append(pixel[0:3])
+        pixels.append(row)
+    return pixels
+
+
+
+def find_settlement_coords(colour, mp):
+    """
+    Identifies the X,Y coord vector given a region colour & regions map
+
+    :param colour: RGB colour of the desired region
+    :param mp: region map, should be preprocessed using pixel_map
+    :return:
+    """
+    # TODO: HIGHLY INEFFICIENT; BETTER SEARCHING ALGORITHM REQ'D
+    x, y = (0, 0)
+    for indr, row in enumerate(mp):
+        for indp, pix in enumerate(row):
+            if pix == (0,0,0):
+                if mp[indr][indp-1] == colour or mp[indr][indp+1] == colour:
+                    x = indr
+                    y = indp
+    return x, y
+
+
+print(name_from_text(Settlements[1]))
+coords = find_settlement_coords(colour_from_name(name_from_text(Settlements[1])), pixel_map(m_regions))
+print(coords)
+
+
+def tile_is_valid(x, y, mp):
+    """
+    Ensures a chosen tile is valid to be placed on provided the terrain is adequate
+
+    :param x:
+    :param y:
+    :param mp:
+    :return:
+    """
+    return
+
+
+def assign_chars(f):
+    """
+    Assigns starting locations for characters to be centered around the faction's starting settlement
+
+    :param f: Factions
+    :return:
+    """
+    for faction in f:
+        # Locate the X,Y of the
+        pass
+    return
+
+
 
 
 def write(c, f, d):
