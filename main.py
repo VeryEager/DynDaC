@@ -107,6 +107,7 @@ def write(c, f, d):
     """
     descr_strat = open("descr_strat.txt", "a")
     descr_strat.write(c)
+    descr_strat.write("".join(Invariants))
 
     for faction in f:
         text_sett = "".join(faction[3])
