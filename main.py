@@ -5,6 +5,8 @@ from PIL import Image, ImageOps
 PATH = "campaign/"
 
 # Global Generation Parameters
+MONEY_MIN = 5000
+MONEY_MAX = 15000
 PURSE_MIN = 3
 PURSE_MAX = 7.5
 
@@ -23,7 +25,7 @@ def split_strat_fac(desc_strat):
     """
     Splits the loaded descr_strat file into factions
 
-    :return: Campaign Info, Faction details, Diplomacy
+    :return: Campaign Info, Faction details[], Diplomacy
     """
     by_fac = re.split(r"(\bfaction\s[a-z]+)|(\bStandings)", desc_strat)
     by_fac = [s for s in by_fac if s is not None]
@@ -33,22 +35,41 @@ def split_strat_fac(desc_strat):
 
 def split_strat_reg_char(faction):
     """
-    Splits the found faction details into settlements & characters
+    Splits the found faction details into regions & characters
 
     :param faction:
-    :return: both the faction details & the settlement entries
+    :return: Faction Info, Settlements[], Characters[], Family
     """
-    split = re.split(r"", faction)
-    provinces = []
-    characters = []
+    split = re.split(r"(\bsettlement)|(\bcharacter\s)", faction)
+    info = [s for s in split if s is not None]
+    info = [x[0]+x[1] for x in zip(info[1::2], info[2::2])]
 
-    return
+    family = info[-1].split("character_record", 1)  # Save info on family relationships
+    info[-1] = family[0]
+    if len(family) > 1:                                   # To Account for some factions not having family trees
+        family = "character_record" + family[1]
+    else:
+        family = ""
+
+    # TODO: Drop Admirals
+
+    settlements = [s for s in info if "character" not in s]  # Split into provinces/characters respectively
+    characters = [s for s in info if "settlement" not in s]
+
+    return split[0], settlements, characters, family
 
 
-# Split descr_strat into factions, regions, armies, etc
-Campaign, Factions, Diplomacy = split_strat_fac(strat)
-Invariants = Factions[-3:-1]
-del Factions[-3]
-del Factions[-2]
+# Split descr_strat into faction sections & diplomacy/campaign
+Campaign, Split_Factions, Diplomacy = split_strat_fac(strat)
+Invariants = Split_Factions[-3:-1]
+del Split_Factions[-3]
+del Split_Factions[-2]
 
+# Subdivide factions into global pool of settlements & faction-specific details (family trees, armies, etc)
+Factions = []
+Settlements = []
+for faction in Split_Factions:
+    details = split_strat_reg_char(faction)
+    Settlements.extend(details[1])
+    Factions.append([details[0], details[2], details[3]])
 
