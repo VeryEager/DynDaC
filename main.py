@@ -57,14 +57,15 @@ def split_strat_reg_char(faction):
         family = ""
 
     settlements = [s for s in info if "character" not in s]  # Split into provinces/characters respectively
-    characters = [s for s in info if "settlement" or "admiral" not in s]  # also need to drop admirals
+    characters = [s for s in info if "settlement" not in s]
+    characters = [s for s in characters if "admiral" not in s]  # also need to drop admirals
 
     return strat[0], settlements, characters, family
 
 
 # Split descr_strat into faction sections & diplomacy/campaign
 Campaign, Split_Factions, Diplomacy = split_strat_fac(d_strat)
-Invariants = Split_Factions[-3:-1]
+Invariants = Split_Factions[-3:-1]  # Some factions shouldn't change positions (dark lord, scripts, etc)
 del Split_Factions[-3]
 del Split_Factions[-2]
 
@@ -182,9 +183,16 @@ def assign_chars(f):
     """
     for fac in f[:-1]:
         capital = find_settlement_coords(colour_from_name(name_from_text(fac[3][0])), pixel_map(m_regions))
+        new_chars = []
         for ch in fac[1]:
-            pass
-    return
+            if "leader," in ch:
+                ch = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(capital[0]) + ", y " + str(capital[1]), ch)
+            else:
+                offset = rand.randint(-10, 10, 2)
+                pos = capital + offset
+                ch = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(pos[0]) + ", y " + str(pos[1]), ch)
+            new_chars.append(ch)
+        fac[1] = new_chars  # Add changed character locations
 
 
 def write(c, f, d):
@@ -200,10 +208,10 @@ def write(c, f, d):
     descr_strat.write(c)
     descr_strat.write("".join(Invariants))
 
-    for faction in f:
-        text_sett = "".join(faction[3])
-        text_char = "".join(faction[1])
-        descr_strat.write(faction[0]+text_sett+text_char+faction[2])
+    for fac in f:
+        text_sett = "".join(fac[3])
+        text_char = "".join(fac[1])
+        descr_strat.write(fac[0]+text_sett+text_char+fac[2])
 
     descr_strat.write(d)
 

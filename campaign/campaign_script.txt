@@ -3082,8 +3082,6 @@ script
     monitor_event PreFactionTurnStart FactionIsLocal
         historic_event welcomedac
         if I_LocalFaction aztecs
-			console_command move_character bree_bandits_1, 434, 471
-			console_command move_character bree_bandits_2, 414, 477
 			increment_kings_purse teutonic_order 1000
 			increment_kings_purse milan 1500
 			increment_kings_purse normans 500
@@ -3094,132 +3092,12 @@ script
 			increment_kings_purse venice 1000
 			increment_kings_purse poland 1000				
             historic_event dorwinion_start
-                spawn_army
-                    faction venice
-                    character	random_name, named character, age 23, x 443, y 300, direction W, label rhun_attackers_3
-                    traits		BadManRace 1, BalchothClan 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Loke Rim Bodyguard			exp 7 armour 0 weapon_lvl 1
-                    unit		Udege Marines					exp 1 armour 0 weapon_lvl 0										
-                    unit		Khandish Raiders			exp 2 armour 0 weapon_lvl 0
-                    unit		Khandish Raiders			exp 2 armour 0 weapon_lvl 0						
-                    unit		Arulad Dragonriders			exp 2 armour 0 weapon_lvl 0
-                    unit		Arulad Dragonriders			exp 2 armour 0 weapon_lvl 0					
-                    unit		Arulad Dragonguard		exp 2 armour 1 weapon_lvl 0
-					unit		Arulad Dragonguard		exp 2 armour 1 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0					
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0									
-                    unit		Daritai Warriors			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Warriors			exp 1 armour 0 weapon_lvl 0
-                    unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
-					unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0				
-                    unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0	
-                end
-                console_command auto_win attacker
-                siege_settlement rhun_attackers_3, Rhun, attack
-                spawn_army
-                    faction venice
-                    character	random_name, named character, age 23, x 420, y 279, direction W, label rhun_attackers_D
-                    traits		BadManRace 1, AruladClan 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, BattleChivalryEvil 1, LogisticalSkill 1, Berserker 1, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Loke Rim Bodyguard					exp 2 armour 0 weapon_lvl 1
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0					
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0				
-                end
-                console_command auto_win attacker
-                siege_settlement rhun_attackers_D, Eastrhun, attack
         end_if
         if I_LocalFaction denmark
             historic_event amroth_start
 			increment_kings_purse spain 1000
 			increment_kings_purse russia 2500		
-			increment_kings_purse sicily -500			
-			console_command create_unit Umbar "Rozadan Footmen" 2 1 0 0
-			console_command create_unit Umbar "Rozadan Halberdiers" 3 1 0 0
-			console_command create_unit Umbar "Rozadan Bowmen" 2 1 0 0
-			spawn_army
-                    faction england
-                    character	random_name, named character, age 26, x 347, y 226, hero_ability WHIPING
-                    traits		OrcRace 1, HeroAbilityOrcWhiping 1, BattleChivalryEvil 2, Bloodthirsty 1, GoodCommander 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk Bodyguard					exp 5 armour 0 weapon_lvl 0
-                    unit		Black Uruk Halberds			exp 2 armour 0 weapon_lvl 0
-                    unit		Black Uruk Halberds			exp 2 armour 0 weapon_lvl 0
-                    unit		Orc Archers			exp 3 armour 0 weapon_lvl 0
-                    unit		Orc Archers			exp 3 armour 0 weapon_lvl 0
-                    unit		Black Uruks			exp 2 armour 0 weapon_lvl 0
-                    unit		Black Uruks			exp 2 armour 0 weapon_lvl 0
-                    unit		Black Uruks			exp 2 armour 0 weapon_lvl 0
-                    unit		Black Uruks			exp 2 armour 0 weapon_lvl 0
-                    unit		Orc Host			exp 0 armour 0 weapon_lvl 0
-                    unit		Orc Host			exp 0 armour 0 weapon_lvl 0
-                    unit		Orc Host			exp 0 armour 0 weapon_lvl 0
-                end				
-				spawn_army
-                    faction england
-                    character	random_name, named character, age 26, x 348, y 247, hero_ability WHIPING 
-                    traits		OrcRace 1, HeroAbilityOrcWhiping 1, BattleChivalryEvil 2, Bloodthirsty 1, GoodCommander 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk Bodyguard					exp 5 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 3 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 3 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 3 armour 0 weapon_lvl 0
-					unit		Southron Warband			exp 3 armour 0 weapon_lvl 0
-                    unit		Southron Lancers			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Lancers			exp 2 armour 0 weapon_lvl 0
-                    unit		Loke-Gamp Rim			exp 3 armour 0 weapon_lvl 0
-                    unit		Loke-Gamp Rim			exp 3 armour 0 weapon_lvl 0
-                    unit		Loke-Innas Rim			exp 0 armour 0 weapon_lvl 0
-                    unit		Loke-Innas Rim			exp 0 armour 0 weapon_lvl 0
-                end
-                spawn_army
-                    faction spain
-                    character	random_name, named character, age 26, x 340, y 123, direction N, label harad_attackers_9
-                    traits		BadManRace 1, Haradrim 1, AIBoost 1, GoodAdministrator 1, GoodAttacker 1, GoodCommander 2, BattleChivalryEvil 2, LogisticalSkill 1, StrategyChivalryEvil 1, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                    unit		Black Snake Guard					exp 5 armour 0 weapon_lvl 0
-                    unit		Southron Lancers			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Lancers			exp 2 armour 0 weapon_lvl 0					
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0					
-                end
-                console_command auto_win attacker
-                siege_settlement harad_attackers_9, South_Mithlond, attack
-                spawn_army
-                    faction spain
-                    character	random_name, named character, age 26, x 360, y 75, direction S, label harad_attackers_10
-                    traits		BadManRace 1, Haradrim 1, AIBoost 1, GoodAdministrator 1, GoodAttacker 1, GoodCommander 2, BattleChivalryEvil 2, LogisticalSkill 1, StrategyChivalryEvil 1, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                    unit		Black Snake Guard					exp 5 armour 0 weapon_lvl 0				
-                    unit		Haradrim Spearmen			exp 2 armour 0 weapon_lvl 0
-                    unit		Haradrim Archers			exp 2 armour 0 weapon_lvl 0					
-                end
-                console_command auto_win attacker
-                siege_settlement harad_attackers_10, Far_Harad, attack					
-            spawn_army
-                faction khand
-                character	random_name, named character, age 31, x 473, y 105, direction S, label khand_attackers_3
-                traits		BadManRace 1, VariagTribe 1, AIBoost 1, BattleChivalryEvil 1, GoodAttacker 2, GoodCavalryGeneral 1, GoodCommander 2, HarshRuler 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                unit		Variag Nobles						exp 5 armour 1 weapon_lvl 0
-                unit		Khandish Raiders			exp 1 armour 1 weapon_lvl 0
-                unit		Khandish Raiders			exp 1 armour 1 weapon_lvl 0
-                unit		Nomad Horsemen					exp 1 armour 1 weapon_lvl 0
-                unit		Nomad Horsemen					exp 1 armour 1 weapon_lvl 0				
-            end
-            campaign_wait 0.1
-            console_command auto_win attacker
-            siege_settlement khand_attackers_3, Far_Desert, attack		
-                spawn_army
-                    faction spain
-                    character	random_name, named character, age 23, x 317, y 149, direction W, label harad_attackers_2
-                    traits		BadManRace 1, Haradrim 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Hasharii Shadows			exp 2 armour 1 weapon_lvl 0
-                    unit		Haradrim Spearmen			exp 2 armour 0 weapon_lvl 0
-                    unit		Haradrim Archers			exp 2 armour 0 weapon_lvl 0
-                end
-                console_command auto_win attacker
-                siege_settlement harad_attackers_2, Amon_Eithel, attack		
+			increment_kings_purse sicily -500				
         end_if
         if I_LocalFaction england			
             historic_event mordor_start
@@ -3229,128 +3107,13 @@ script
 			increment_kings_purse denmark 1500		
             increment_kings_purse milan 1000
             increment_kings_purse france -500		
-            add_money sicily, 2000			
-                spawn_army
-                    faction sicily
-                    character	Maemen, named character, age 22, x 331, y 219, direction W, label gondor_attackers_m
-					traits		DunedainRace 1, Gondorian 1, AIBoost 1, Disciplinarian 1, GoodDefender 2, SiegeDefender 3, GoodCommander 2, LogisticalSkill 1, Loyal 3, LoyaltyStarter 1, PietyStarter 1, BattleChivalryGood 2
-                    unit		Osgiliath Veterans		exp 4 armour 1 weapon_lvl 0
-                    unit		Osgiliath Veterans		exp 1 armour 0 weapon_lvl 1					
-                    unit		Gondor Infantry			exp 2 armour 1 weapon_lvl 0
-                    unit		Gondor Infantry			exp 2 armour 1 weapon_lvl 0					
-                    unit		Gondor Spearmen			exp 2 armour 1 weapon_lvl 0
-                    unit		Gondor Spearmen			exp 2 armour 1 weapon_lvl 0						
-                    unit		Gondor Archers				exp 2 armour 1 weapon_lvl 0
-                    unit		Gondor Archers				exp 2 armour 1 weapon_lvl 0				
-                end
-                console_command auto_win attacker
-                siege_settlement gondor_attackers_m, East_Osgiliath, attack
-			spawn_army
-				faction sicily
-                character	random_name, named character, age 26, x 323, y 206, battle_model gondor_dol_amroth_officer_swan_knight
-                traits		DunedainRace 1, Gondorian 1, AIBoost 1, Disciplinarian 1, GoodAttacker 1, GoodCommander 2, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, BattleChivalryGood 2
-				unit		Royal Swan-Guard				exp 7 armour 1 weapon_lvl 1
-				unit		Amrothian Squires			exp 2 armour 1 weapon_lvl 1
-				unit		Amrothian Squires			exp 2 armour 1 weapon_lvl 1				
-				unit		Sea-ward Spearmen			exp 2 armour 1 weapon_lvl 1		
-				unit		Sea-ward Spearmen			exp 2 armour 1 weapon_lvl 1					
-				unit		Pinnath Gelin Cavalry			exp 3 armour 0 weapon_lvl 0
-				unit		Pinnath Gelin Cavalry			exp 3 armour 0 weapon_lvl 0				
-				unit		Lossarnach Axemen		exp 2 armour 0 weapon_lvl 0
-				unit		Lossarnach Axemen		exp 2 armour 0 weapon_lvl 0
-				unit		Lebennin Marines		exp 2 armour 1 weapon_lvl 0
-				unit		Lebennin Marines		exp 2 armour 1 weapon_lvl 0
-				unit		Lamedon Clansmen		exp 2 armour 1 weapon_lvl 0
-				unit		Lamedon Clansmen		exp 2 armour 1 weapon_lvl 0
-				unit		Anfalas Pikemen			exp 2 armour 1 weapon_lvl 0
-				unit		Anfalas Pikemen			exp 2 armour 1 weapon_lvl 0				
-				unit		Blackroot Vale Archers		exp 2 armour 1 weapon_lvl 0
-				unit		Blackroot Vale Archers		exp 2 armour 1 weapon_lvl 0
-				unit		Blackroot Vale Archers		exp 2 armour 1 weapon_lvl 0				
-			end			
-			console_command create_unit amon_hen_custom1 "Orc Scouts" 2 2 0 0
-            console_command create_unit amon_hen_custom1 "Raider Warband" 2 1 1 0
-            console_command create_unit amon_hen_custom1 "Raider Skirmishers" 2 0 0 0
         end_if
         if I_LocalFaction gundabad
             historic_event gundabad_start
 			increment_kings_purse moors 2000
 			increment_kings_purse timurids 3000
 			increment_kings_purse mongols 2000
-			increment_kings_purse scotland 500			
-			console_command create_unit Elven_Mirkwood "Woodland Sentinels" 3 3 1 1
-			spawn_army
-                    faction timurids
-                    character	random_name, named character, age 26, x 283, y 398, hero_ability SHIELD
-                    traits		GoodManRace 1, Eotheod 1, HeroAbilityShield 1, GoodCommander 3, RiskyDefender 1, KindRuler 1, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Skin-Changers					exp 7 armour 0 weapon_lvl 0
-                    unit		Carrock Guard			exp 4 armour 1 weapon_lvl 0
-                    unit		Beorning Warriors			exp 3 armour 0 weapon_lvl 0
-                    unit		Beorning Warriors			exp 3 armour 0 weapon_lvl 0
-                    unit		Greenwood Foresters			exp 2 armour 0 weapon_lvl 0
-                    unit		Greenwood Foresters			exp 2 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 1 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 1 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 1 armour 0 weapon_lvl 0
-                    unit		Beorning Riders			exp 4 armour 0 weapon_lvl 0	
-					unit		Beorning Riders			exp 4 armour 0 weapon_lvl 0
-                end				
-			spawn_army
-                    faction timurids
-                    character	random_name, named character, age 26, x 275, y 428, hero_ability SHIELD
-                    traits		GoodManRace 1, Eotheod 1, HeroAbilityShield 1, GoodCommander 3, RiskyDefender 1, KindRuler 1, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Skin-Changers					exp 7 armour 0 weapon_lvl 0
-                    unit		Eotheod Footmen			exp 3 armour 1 weapon_lvl 0
-                    unit		Eotheod Footmen			exp 3 armour 0 weapon_lvl 0
-                    unit		Eotheod Footmen			exp 3 armour 0 weapon_lvl 0					
-					unit		Eotheod Longbowmen	exp 2 armour 0 weapon_lvl 0
-					unit		Eotheod Longbowmen	exp 2 armour 0 weapon_lvl 0
-					unit		Eotheod Longbowmen		exp 2 armour 0 weapon_lvl 0
-					unit		Eotheod Horse Archers		exp 4 armour 0 weapon_lvl 0
-					unit		Eotheod Horse Archers		exp 4 armour 0 weapon_lvl 0					
-					unit		Eotheod Cavalry		exp 3 armour 0 weapon_lvl 0
-					unit		Eotheod Cavalry		exp 3 armour 0 weapon_lvl 0
-                end		
-                spawn_army
-                    faction moors
-                    character	random_name, named character, age 30, x 313, y 438, direction E, label erebor_attackers_3
-                    traits		DwarvenRace 1, Longbeard 1, AIBoost 1, Disciplinarian 1, GoodCommander 3, GoodDefender 2, LogisticalSkill 2, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Durins Guard         		exp 7 armour 1 weapon_lvl 0
-					unit		Dragonslayers	    exp 3 armour 1 weapon_lvl 0
-					unit		Iron Hills Mattocks	    exp 3 armour 1 weapon_lvl 0
-					unit		Iron Hills Mattocks	    exp 3 armour 1 weapon_lvl 0
-					unit		Erebor Infantry		 	   exp 3 armour 1 weapon_lvl 0
-					unit		Erebor Infantry			    exp 3 armour 1 weapon_lvl 0
-					unit		Kings Warriors	    exp 2 armour 1 weapon_lvl 0	
-					unit		Kings Warriors	    exp 2 armour 1 weapon_lvl 0						
-                end
-                console_command auto_win attacker
-                siege_settlement erebor_attackers_3, Withered, attack
-                spawn_army
-                    faction moors
-                    character	random_name, named character, age 35, x 312, y 430, direction W, label erebor_attackers_4
-                    traits		DwarvenRace 1, Longbeard 1, AIBoost 1, Disciplinarian 1, GoodCommander 3, GoodDefender 2, LogisticalSkill 2, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Durins Guard         		exp 7 armour 1 weapon_lvl 0
-					unit		Iron Guard	    exp 3 armour 1 weapon_lvl 0
-					unit		Iron Guard	    exp 3 armour 1 weapon_lvl 0
-					unit		Erebor Infantry		 	   exp 3 armour 1 weapon_lvl 0
-					unit		Erebor Infantry			    exp 3 armour 1 weapon_lvl 0
-					unit		Kings Warriors	    exp 2 armour 1 weapon_lvl 0	
-					unit		Kings Warriors	    exp 2 armour 1 weapon_lvl 0		
-                end
-                console_command auto_win attacker
-                siege_settlement erebor_attackers_4, Grey_Foothills, attack
-                spawn_army
-                    faction timurids
-                    character	random_name, named character, age 24, x 285, y 429, direction E, label beorn_attackers_1
-                    traits		GoodManRace 1, Eotheod 1, HeroAbilityShield 1, GoodCommander 2, RiskyDefender 1, KindRuler 1, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Skin-Changers					exp 7 armour 0 weapon_lvl 0
-                    unit		Beorning Warriors			exp 1 armour 1 weapon_lvl 0
-                    unit		Beorning Warriors			exp 1 armour 1 weapon_lvl 0
-                    unit		Eotheod Longbowmen			exp 0 armour 0 weapon_lvl 0
-                end	
-                console_command auto_win attacker
-                siege_settlement beorn_attackers_1, Wrakyaburg, attack			
+			increment_kings_purse scotland 500					
         end_if
         if I_LocalFaction france
             historic_event isengard_start
@@ -3363,89 +3126,21 @@ script
             set_counter give_moria_to_hre 2	
 			increment_kings_purse saxons 3500
 			increment_kings_purse turks 1500
-			increment_kings_purse timurids 500	
-			console_command create_unit Imladris "Lindar Bowmen" 3 1 1 0		
-			console_command create_unit Imladris "Lindar Guards" 3 1 1 1		
-			console_command create_unit Imladris "Amanyar Riders" 1 1 1 1
-			spawn_army
-                    faction timurids
-                    character	random_name, named character, age 26, x 283, y 398, hero_ability SHIELD
-                    traits		GoodManRace 1, Eotheod 1, HeroAbilityShield 1, GoodCommander 2, RiskyDefender 1, KindRuler 1, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Skin-Changers					exp 5 armour 0 weapon_lvl 0
-                    unit		Beorning Warriors			exp 1 armour 1 weapon_lvl 0
-                    unit		Beorning Warriors			exp 1 armour 1 weapon_lvl 0
-                    unit		Beorning Warriors			exp 2 armour 0 weapon_lvl 0
-                    unit		Beorning Warriors			exp 2 armour 0 weapon_lvl 0
-                    unit		Woodmen Trackers			exp 2 armour 0 weapon_lvl 0
-                    unit		Woodmen Trackers			exp 2 armour 0 weapon_lvl 0
-                    unit		Woodmen Trackers			exp 2 armour 0 weapon_lvl 0
-                    unit		Eotheod Longbowmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Eotheod Longbowmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 0 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 0 armour 0 weapon_lvl 0
-                    unit		Beorning Riders			exp 1 armour 0 weapon_lvl 0
-                    unit		Beorning Riders			exp 1 armour 0 weapon_lvl 0					
-                end			
-				spawn_army
-					faction saxons
-					character	random_name, named character, age 50, x 240, y 395, direction E, label imladris_attackers_3
-					traits		ElvenRace 1, Noldor 1, AIBoost 1, Energetic 1, Handsome 1, GoodAmbusher 3, GoodCommander 3, GoodDefender 3, SiegeDefender 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, StrategicSkill 1
-					unit		Calaquendi Lords			exp 9 armour 1 weapon_lvl 1				
-					unit		Amanyar Swordmasters	exp 1 armour 0 weapon_lvl 0
-					unit		Lindar Guards		exp 1 armour 0 weapon_lvl 0	
-					unit		Lindar Guards		exp 1 armour 0 weapon_lvl 0
-					unit		Lindar Bowmen		exp 3 armour 0 weapon_lvl 0							
-					unit		Lindar Bowmen		exp 3 armour 0 weapon_lvl 0
-					unit		Amanyar Riders		exp 1 armour 0 weapon_lvl 0
-					unit		Amanyar Riders		exp 1 armour 0 weapon_lvl 0					
-                end				
-                console_command auto_win attacker
-                siege_settlement imladris_attackers_3, Mitheithel, attack				
-				spawn_army
-                    faction turks
-                    character	random_name, named character, age 27, x 151, y 428, direction E, label dunedain_attackers_5
-                    traits		DunedainRace 1, DunedainRanger 1, AIBoost 1, GoodAmbusher 2, GoodCommander 3, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Dunedain Bodyguard				exp 7 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0					
-                    unit		Dunedain Rangers				exp 2 armour 0 weapon_lvl 0
-                    unit		Dunedain Rangers				exp 2 armour 0 weapon_lvl 0	
-                    unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0					
-                    unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0							
-                end
-                console_command auto_win attacker
-                siege_settlement dunedain_attackers_5, Arthedain_Rammas, attack				
+			increment_kings_purse timurids 500			
         end_if
         if I_LocalFaction hungary
             historic_event bluedwarves_start
             historic_event luin_ring_intro
-			increment_kings_purse portugal 3500	
-			console_command create_unit Carn_Dum "Iron Crown Longbowmen" 2 1 0 0
-			console_command create_unit Carn_Dum "Iron Crown Halberdiers" 2 1 0 0
-			console_command create_unit Carn_Dum "Iron Crown Warriors" 2 1 0 0			
+			increment_kings_purse portugal 3500				
         end_if
         if I_LocalFaction ireland
             historic_event galadhrim_start
             historic_event silvan_union_start
 			increment_kings_purse poland 1000
 			increment_kings_purse gundabad 3000
-			console_command create_unit Deep_Mirkwood "Warg Marauders" 3 3 0 0
         end_if
         if I_LocalFaction khand
             historic_event khand_start
-			console_command create_unit Far_Harad "Mumakil"
-                spawn_army
-                    faction spain
-                    character	random_name, named character, age 26, x 360, y 75, direction S, label harad_attackers_10
-                    traits		BadManRace 1, Haradrim 1, AIBoost 1, GoodAdministrator 1, GoodAttacker 1, GoodCommander 2, BattleChivalryEvil 2, LogisticalSkill 1, StrategyChivalryEvil 1, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                    unit		Black Snake Guard					exp 5 armour 0 weapon_lvl 0				
-                    unit		Haradrim Spearmen			exp 2 armour 0 weapon_lvl 0
-                    unit		Haradrim Archers			exp 2 armour 0 weapon_lvl 0					
-                end
-                console_command auto_win attacker
-                siege_settlement harad_attackers_10, Far_Harad, attack		
         end_if
         if I_LocalFaction milan		
             historic_event rohan_start
@@ -3454,62 +3149,13 @@ script
 			increment_kings_purse aztecs 500			
 			increment_kings_purse poland 500
 			increment_kings_purse england 500	
-            add_money france, 2500
-                console_command create_unit Nan_Curunir "Uruk-hai Infantry" 1 1 0 0
-                console_command create_unit Nan_Curunir "Uruk-hai Pikemen" 1 1 0 0				
-                console_command create_unit Nan_Curunir "Half Orc Baneguard" 2 1 0 0
-                console_command create_unit Nan_Curunir "Half Orc Spearmen" 2 1 0 0		
-                spawn_army
-                    faction france
-                    character	random_name, named character, age 23, x 199, y 266, direction W, label isengard_attackers_3
-					traits		UrukHaiRace 1, AIBoost 1, Berserker 1, Bloodthirsty 1, GoodCommander 3, GoodDefender 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk-hai Bodyguards				exp 5 armour 0 weapon_lvl 1
-                    unit		Uruk-hai Raiders				exp 2 armour 0 weapon_lvl 0
-                    unit		Uruk-hai Raiders				exp 2 armour 0 weapon_lvl 0						
-                    unit		Warg Marauders					exp 3 armour 0 weapon_lvl 0			
-                end
-                console_command auto_win attacker
-                siege_settlement isengard_attackers_3, Fortriu, attack			
-			spawn_army
-				faction france
-				character	Luag, named character, age 34, x 210, y 271, portrait Luag, battle_model dunland_general
-				traits		Luag 1, CustomBG 1, MiddleManRace 1, Dunlending 1, AIBoost 1, Drink 1, GoodAttacker 1, GoodCommander 2, LogisticalSkill 1, Loyal 1, LoyaltyStarter 1, PoliticsSkill 1, PietyStarter 1
-				unit		Chieftains Bodyguards				exp 5 armour 0 weapon_lvl 0
-				unit		Dunlending Pikemen				exp 2 armour 2 weapon_lvl 0
-				unit		Dunlending Pikemen				exp 2 armour 2 weapon_lvl 0
-				unit		Dunlending Pikemen				exp 2 armour 2 weapon_lvl 0
-				unit		Dunlending Pikemen				exp 2 armour 2 weapon_lvl 0
-				unit		Beast Slayers			exp 3 armour 1 weapon_lvl 0
-				unit		Beast Slayers			exp 3 armour 1 weapon_lvl 0
-				unit		Dunlending Horsemen			exp 1 armour 1 weapon_lvl 1
-				unit		Dunlending Horsemen			exp 1 armour 1 weapon_lvl 1
-			end			
-			console_command create_unit amon_hen_custom1 "Orc Scouts" 2 2 0 0
-            console_command create_unit amon_hen_custom1 "Raider Warband" 2 1 1 0
-            console_command create_unit amon_hen_custom1 "Raider Skirmishers" 2 0 0 0	
+            add_money france, 2500		
         end_if
         if I_LocalFaction mongols
             historic_event thranduil_start
             historic_event silvan_union_start
 			increment_kings_purse poland 500
 			increment_kings_purse gundabad 2500
-			console_command create_unit Deep_Mirkwood  "Warg Marauders" 2 2 0 0
-            console_command create_unit Central_Mirkwood "Raider Warband" 1 1 0 0
-            console_command create_unit Central_Mirkwood "Raider Skirmishers" 1 0 0 0
-            console_command create_unit West_Mirkwood "Dol Guldur Host" 3 1 0 0
-            console_command create_unit West_Mirkwood "Mirkwood Hunters" 3 1 0 1
-                spawn_army
-                    faction poland
-                    character	random_name, named character, age 24, x 327, y 377, direction E, label mirkwood_attackers_thran
-                    traits		OrcRace 1, AIBoost 1, Brave 2, Disciplinarian 1, GoodCommander 3, GoodDefender 2, LogisticalSkill 2, Loyal 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk Bodyguard				exp 7 armour 1 weapon_lvl 1
-                    unit		Dol Guldur Host				exp 3 armour 0 weapon_lvl 0
-                    unit		Dol Guldur Host				exp 3 armour 0 weapon_lvl 0
-                    unit		Dol Guldur Archers			exp 2 armour 1 weapon_lvl 0
-                    unit		Dol Guldur Archers			exp 2 armour 1 weapon_lvl 0
-                end
-                console_command auto_win attacker
-                siege_settlement mirkwood_attackers_thran, Far_Rhovanion, attack
         end_if
         if I_LocalFaction moors
             historic_event erebor_start
@@ -3517,98 +3163,12 @@ script
 			increment_kings_purse venice 2000
 			add_money venice, 2500
 			add_money gundabad, 2500
-                spawn_army
-                    faction gundabad
-                    character	random_name, named character, age 26, x 313, y 438, direction E, label gund_attackers_4
-                    traits		SnowRace 1, AIBoost 1, Disciplinarian 1, GoodAttacker 1, GoodCommander 2, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Mountain Guard			exp 9 armour 1 weapon_lvl 0
-                    unit		Bolgs Champions			exp 3 armour 0 weapon_lvl 0					
-					unit		Snow-Orc Spearmen			exp 2 armour 0 weapon_lvl 0
-					unit		Snow-Orc Spearmen			exp 2 armour 0 weapon_lvl 0
-					unit		Snow-Orc Spearmen			exp 2 armour 0 weapon_lvl 0					
-                    unit		Snow-Orc Raiders			exp 2 armour 0 weapon_lvl 0
-                    unit		Snow-Orc Raiders			exp 2 armour 0 weapon_lvl 0					
-                    unit		Snow-Orc Scouts			exp 3 armour 0 weapon_lvl 0
-					unit		Snow-Orc Scouts			exp 3 armour 0 weapon_lvl 0
-                end
-                console_command auto_win attacker
-                siege_settlement gund_attackers_4, Withered, attack	
-                spawn_army
-                    faction gundabad
-                    character	random_name, named character, age 27, x 311, y 430, direction E, label gund_attackers_5
-                    traits		SnowRace 1, AIBoost 1, Disciplinarian 1, GoodAttacker 1, GoodCommander 3, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Mountain Guard			exp 9 armour 1 weapon_lvl 0
-                    unit		Snow-Orc Raiders			exp 2 armour 0 weapon_lvl 0
-                    unit		Snow-Orc Raiders			exp 2 armour 0 weapon_lvl 0					
-					unit		Snow-Orc Spearmen			exp 2 armour 0 weapon_lvl 0
-					unit		Snow-Orc Spearmen			exp 2 armour 0 weapon_lvl 0
-					unit		Snow-Orc Spearmen			exp 2 armour 0 weapon_lvl 0					
-                    unit		Snow-Orc Scouts			exp 3 armour 0 weapon_lvl 0
-					unit		Snow-Orc Scouts			exp 3 armour 0 weapon_lvl 0
-                end
-                console_command auto_win attacker
-                siege_settlement gund_attackers_5, Grey_Foothills, attack
-                spawn_army
-                    faction venice
-                    character	random_name, named character, age 23, x 443, y 300, direction W, label rhun_attackers_3
-                    traits		BadManRace 1, BalchothClan 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Loke Rim Bodyguard			exp 2 armour 0 weapon_lvl 1
-                    unit		Udege Marines					exp 1 armour 0 weapon_lvl 0					
-                    unit		Khandish Raiders			exp 2 armour 0 weapon_lvl 0
-                    unit		Khandish Raiders			exp 2 armour 0 weapon_lvl 0						
-                    unit		Arulad Dragonriders			exp 2 armour 0 weapon_lvl 0
-                    unit		Arulad Dragonriders			exp 2 armour 0 weapon_lvl 0					
-                    unit		Arulad Dragonguard		exp 2 armour 1 weapon_lvl 0
-					unit		Arulad Dragonguard		exp 2 armour 1 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0					
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0									
-                    unit		Daritai Warriors			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Warriors			exp 1 armour 0 weapon_lvl 0
-                    unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
-					unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0				
-                    unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0				
-                end
-                console_command auto_win attacker
-                siege_settlement rhun_attackers_3, Rhun, attack
-                spawn_army
-                    faction venice
-                    character	random_name, named character, age 23, x 460, y 341, direction W, label rhun_attackers_e
-                    traits		BadManRace 1, AruladClan 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Loke Rim Bodyguard					exp 2 armour 0 weapon_lvl 1
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0			
-                    unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0	
-                end
-                console_command auto_win attacker
-                siege_settlement rhun_attackers_e, Wintirion, attack
         end_if			
         if I_LocalFaction normans
             historic_event shire_start
 			historic_event bree_choice_intro
 			increment_kings_purse aztecs 500
 			increment_kings_purse portugal 2500
-            console_command create_unit Emyn_Beraid "Bandits" 3 0 0 0
-            spawn_army
-                    faction aztecs
-                    character	random_name, named character, age 26, x 180, y 318, direction E, label dunland_attackers_2
-                    traits		MiddleManRace 1, Dunlending 1,  AIBoost 1, Berserker 1, GoodAttacker 2, GoodCommander 2, BattleChivalryEvil 1, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1, Energetic 1
-                    unit		Chieftains Bodyguards			exp 5 armour 0 weapon_lvl 0
-                    unit		Beast Slayers		exp 3 armour 1 weapon_lvl 0			
-                    unit		Beast Slayers		exp 3 armour 1 weapon_lvl 0						
-                    unit		Dunlending Pikemen			exp 1 armour 0 weapon_lvl 0
-                    unit		Dunlending Pikemen			exp 1 armour 0 weapon_lvl 0
-                    unit		Dunlending Raiders		exp 3 armour 0 weapon_lvl 0
-                    unit		Dunlending Raiders		exp 3 armour 0 weapon_lvl 0
-                    unit		Dunlending Horsemen		exp 1 armour 0 weapon_lvl 0				
-                end
-                campaign_wait 0.1
-                console_command auto_win attacker
-                siege_settlement dunland_attackers_2, Lone_lands, attack		
         end_if
         if I_LocalFaction norway
             historic_event khazad_start
@@ -3625,78 +3185,6 @@ script
             add_money saxons, 2000
             add_money turks, 1000				
             add_money portugal, 2000			
-			console_command create_unit Imladris "Lindar Bowmen" 3 1 1 0		
-			console_command create_unit Imladris "Lindar Guards" 3 1 1 1		
-			console_command create_unit Imladris "Amanyar Riders" 1 1 1 1
-                spawn_army
-                    faction hungary
-                    character	random_name, named character, age 23, x 106, y 455, direction E, label eredluin_attackers_1
-					traits		DwarvenRace 1, Broadbeam 1, Drink 1, Energetic 1, GoodCommander 2, GoodDefender 2, HaleAndHearty 1, LoyaltyStarter 1, PietyStarter 1
-                    unit		Tumunzahar Nobles					exp 9 armour 0 weapon_lvl 1
-                    unit		Ered Luin Pikemen			exp 3 armour 0 weapon_lvl 0
-                    unit		Ered Luin Pikemen			exp 3 armour 0 weapon_lvl 0		
-					unit		Ered Luin Pikemen			exp 3 armour 0 weapon_lvl 0							
-                    unit		Firebeard Warriors					exp 2 armour 0 weapon_lvl 0		
-                    unit		Firebeard Warriors					exp 2 armour 0 weapon_lvl 0						
-                end
-                console_command auto_win attacker
-                siege_settlement eredluin_attackers_1, Forochel, attack
-				spawn_army
-                    faction turks
-                    character	random_name, named character, age 27, x 180, y 401
-                    traits		DunedainRace 1, DunedainRanger 1, AIBoost 1, GoodAmbusher 2, GoodCommander 3, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Dunedain Bodyguard				exp 7 armour 1 weapon_lvl 0
-                    unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0				
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Cardolan Sentinels			exp 2 armour 0 weapon_lvl 0
-                    unit		Cardolan Sentinels			exp 2 armour 1 weapon_lvl 0
-                    unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0	
-					unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0
-					unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0					
-					unit		Dunedain Scouts			exp 4 armour 0 weapon_lvl 0
-                end	
-				spawn_army
-					faction normans
-					character	random_name, named character, age 25, x 187, y 388
-					traits		MiddleManRace 1, Breelander 1, AIBoost 1, GoodCommander 3, GoodDefender 3, SiegeDefender 1, Loyal 1, LoyaltyStarter 1, PietyStarter 1
-					unit		Breeland Bodyguard			exp 7 armour 1 weapon_lvl 1
-					unit		Merchant Cavalry		exp 3 armour 1 weapon_lvl 0
-					unit		Merchant Cavalry		exp 3 armour 1 weapon_lvl 0
-					unit		Watch Shirriffs			exp 2 armour 0 weapon_lvl 1
-					unit		Watch Shirriffs			exp 2 armour 0 weapon_lvl 1
-					unit		Watch Shirriffs			exp 2 armour 0 weapon_lvl 1					
-                end
-				spawn_army
-					faction saxons
-					character	random_name, named character, age 50, x 240, y 395, direction E, label imladris_attackers_1
-					traits		ElvenRace 1, Noldor 1, AIBoost 1, Energetic 1, Handsome 1, GoodAmbusher 3, GoodCommander 3, GoodDefender 3, SiegeDefender 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, StrategicSkill 1
-					unit		Calaquendi Lords			exp 9 armour 1 weapon_lvl 1				
-					unit		Amanyar Swordmasters		exp 1 armour 0 weapon_lvl 0
-					unit		Lindar Guards		exp 1 armour 0 weapon_lvl 0
-					unit		Lindar Guards		exp 1 armour 0 weapon_lvl 0							
-					unit		Lindar Bowmen		exp 3 armour 0 weapon_lvl 0
-					unit		Lindar Bowmen		exp 3 armour 0 weapon_lvl 0
-					unit		Amanyar Riders		exp 1 armour 0 weapon_lvl 0
-					unit		Amanyar Riders		exp 1 armour 0 weapon_lvl 0					
-                end				
-                console_command auto_win attacker
-                siege_settlement imladris_attackers_1, Mitheithel, attack	
-				spawn_army
-                    faction turks
-                    character	random_name, named character, age 26, x 151, y 428, direction E, label dunedain_attackers_4
-                    traits		DunedainRace 1, DunedainRanger 1, AIBoost 1, GoodAmbusher 3, GoodCommander 3, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Dunedain Bodyguard				exp 7 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0
-					unit		Dunedain Wardens		exp 3 armour 1 weapon_lvl 0					
-                    unit		Dunedain Rangers				exp 2 armour 0 weapon_lvl 0
-                    unit		Dunedain Rangers				exp 2 armour 0 weapon_lvl 0	
-                    unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0					
-                    unit		Cardolan Riders			exp 4 armour 1 weapon_lvl 0						
-                end
-                console_command auto_win attacker
-                siege_settlement dunedain_attackers_4, Arthedain_Rammas, attack		
         end_if				
         if I_LocalFaction poland
             historic_event shadow_start
@@ -3704,94 +3192,14 @@ script
 			increment_kings_purse timurids 750
 			increment_kings_purse ireland 2000
 			increment_kings_purse mongols 2000
-			console_command create_unit Elven_Mirkwood "Woodland Spearmen" 2 2 1 1			
-			console_command create_unit Elven_Mirkwood "Woodland Sentinels" 3 2 1 1
-			console_command create_unit Elven_Mirkwood "Woodland Horsearchers" 2 2 1 1
-			console_command create_unit Celebrant "Lothlorien Marchwardens" 3 2 1 1
-			console_command create_unit Celebrant "Lorien Lancers" 2 2 1 1
-			console_command create_unit Celebrant "Lorien Sentries" 2 2 1 1				
-            console_command create_unit East_Mirkwood "Raider Warband" 1 2 1 0
-            console_command create_unit East_Mirkwood "Raider Skirmishers" 2 1 0 0
-            console_command create_unit Wilderland "Rhovanion Riders" 2 2 0 0
-            console_command create_unit Wilderland "Rhovanion Spearmen" 1 1 1 0
-            console_command create_unit Wilderland "Rhovanion Hunters" 2 1 0 0
-			spawn_army
-                    faction timurids
-                    character	random_name, named character, age 26, x 283, y 398, hero_ability SHIELD
-                    traits		GoodManRace 1, Eotheod 1, HeroAbilityShield 1, GoodCommander 2, RiskyDefender 1, KindRuler 1, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Skin-Changers					exp 5 armour 0 weapon_lvl 0
-                    unit		Beorning Warriors			exp 1 armour 1 weapon_lvl 0
-                    unit		Beorning Warriors			exp 1 armour 1 weapon_lvl 0
-                    unit		Beorning Warriors			exp 2 armour 0 weapon_lvl 0
-                    unit		Woodmen Trackers			exp 2 armour 0 weapon_lvl 0
-                    unit		Woodmen Trackers			exp 2 armour 0 weapon_lvl 0
-                    unit		Woodmen Trackers			exp 2 armour 0 weapon_lvl 0
-                    unit		Eotheod Longbowmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Eotheod Longbowmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 0 armour 0 weapon_lvl 0
-                    unit		Beorning Shieldbearers			exp 0 armour 0 weapon_lvl 0
-                    unit		Beorning Riders			exp 1 armour 0 weapon_lvl 0
-                    unit		Beorning Riders			exp 1 armour 0 weapon_lvl 0	
-                end		
         end_if
         if I_LocalFaction russia
-            snap_strat_camera 210, 55
             campaign_wait 1
             console_command surrender_regions russia
             campaign_wait 1
             unfreeze_faction_ai russia
-			console_command create_unit Far_Harad "Mumakil"
-            if I_SettlementOwner Umbar = slave
-			    spawn_army
-                    faction sicily
-                    character	random_name, named character, age 26, x 266, y 81, direction W, label rebelumbar_attackers_1
-                    traits		AIBoost 1, GoodAdministrator 1, GoodAttacker 1, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1
-                    unit		Gondor Bodyguard					exp 2 armour 0 weapon_lvl 0
-                    unit		Territorial Guardsmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Territorial Guardsmen			exp 2 armour 0 weapon_lvl 0
-                end
-                console_command auto_win attacker
-                siege_settlement rebelumbar_attackers_1, Umbar, attack
-            end_if
-            if I_SettlementOwner Umbar = sicily
-			    spawn_army
-                    faction slave
-                    character	Safwahdi, named character, age 26, x 265, y 82, portrait Harad, direction S, label rebelumbar_attackers_2
-                    traits		NumenoreanRace 1, AIBoost 1, GoodAdministrator 1, GoodAttacker 1, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1
-                    unit		Black Snake Guard					exp 2 armour 0 weapon_lvl 0
-                    unit		Hasharii Blades					exp 1 armour 0 weapon_lvl 0					
-                    unit		Hasharii Shadows			exp 1 armour 0 weapon_lvl 0					
-                    unit		Southron Pikemen			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Pikemen			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Pikemen			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Archers			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Archers			exp 2 armour 0 weapon_lvl 0
-                    unit		Serpent Guard			exp 0 armour 0 weapon_lvl 0					
-                    unit		Serpent Archers			exp 0 armour 0 weapon_lvl 0
-                    unit		Serpent Bladesmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Haradrim Spearmen			exp 0 armour 0 weapon_lvl 0					
-                    unit		Haradrim Spearmen			exp 0 armour 0 weapon_lvl 0
-                    unit		Haradrim Spearmen			exp 0 armour 0 weapon_lvl 0	
-                    unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0
-                    unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0									
-                end
-                console_command auto_win attacker
-                siege_settlement rebelumbar_attackers_2, Umbar, attack
             end_if
 			console_command add_population Umbar, 1000
-			move_strat_camera 265, 81
-            spawn_character russia, Zagarakhor, diplomat, age 21, x 265, y 82
-                            console_command give_trait Zagarakhor NaturalDiplomatSkill 2
-                            console_command give_trait Zagarakhor GoodDiplomat 1
-							console_command give_ancillary Zagarakhor numenorean_ancestry
-							console_command give_ancillary Zagarakhor umbar_spy
-            spawn_character russia, Indrazor, spy, age 21, x 289, y 77
-                            console_command give_trait Indrazor SpySkill 4
-                            console_command give_trait Indrazor NaturalSpySkill  1
-							console_command give_ancillary Indrazor coin_bag 
-							console_command give_ancillary Indrazor black_cat 		
             historic_event umbar_start
         end_if
         if I_LocalFaction saxons
@@ -3803,18 +3211,6 @@ script
             send_character_off_map elladan_1	
             send_character_off_map elrohir_1
             destroy_units saxons Dunedain Bodyguard		
-	        console_command create_unit Forlindon "Lindon Longspears" 1 0 0 0
-			console_command create_unit Forlindon "Lindar Bowmen" 1 0 0 0
-	        console_command create_unit Harlindon "Lindon Longspears" 1 0 0 0
-			console_command create_unit Harlindon "Lindar Mariners" 1 0 0 0		
-			console_command create_unit Hollin "Warg Riders" 2 1 0 0				
-			console_command create_unit Hollin "Heavy Goblin Infantry" 3 1 0 0			
-			console_command create_unit Central_Mountains "Heavy Goblin Infantry" 2 1 0 0			
-			console_command create_unit Central_Mountains "Heavy Goblin Archers" 2 1 0 0	
-			console_command create_unit Central_Mountains "Warg Riders" 2 1 0 0				
-			console_command create_unit Carn_Dum "Iron Crown Longbowmen" 1 1 0 0
-			console_command create_unit Carn_Dum "Iron Crown Halberdiers" 3 1 0 0
-			console_command create_unit Carn_Dum "Iron Crown Warriors" 2 1 0 0
         end_if
         if I_LocalFaction scotland
 			increment_kings_purse venice 1000
@@ -3825,60 +3221,6 @@ script
             add_money venice, 1000			
             historic_event dale_start
             historic_event allegiances
-            console_command create_unit Celduin_North "Rhovanion Spearmen" 2 1 0 0
-            console_command create_unit Celduin_North "Rhovanion Hunters" 2 1 0 1
-            console_command create_unit Far_Rhovanion "Rhovanion Spearmen" 1 1 0 0
-            console_command create_unit Far_Rhovanion "Rhovanion Hunters" 2 1 0 0
-                spawn_army
-                    faction poland
-                    character	random_name, named character, age 24, x 327, y 377, direction E, label mirkwood_attackers_dale
-                    traits		OrcRace 1, AIBoost 1, Brave 2, Disciplinarian 1, GoodCommander 3, GoodDefender 2, LogisticalSkill 2, Loyal 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk Bodyguard				exp 7 armour 0 weapon_lvl 0
-                    unit		Dol Guldur Host				exp 3 armour 0 weapon_lvl 0
-                    unit		Dol Guldur Host				exp 3 armour 0 weapon_lvl 0
-                    unit		Dol Guldur Archers			exp 1 armour 1 weapon_lvl 0
-                    unit		Dol Guldur Archers			exp 1 armour 1 weapon_lvl 0
-                end
-                console_command auto_win attacker
-                siege_settlement mirkwood_attackers_dale, Far_Rhovanion, attack
-                spawn_army
-                    faction venice
-                    character	random_name, named character, age 23, x 443, y 300, direction W, label rhun_attackers_3
-                    traits		BadManRace 1, BalchothClan 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Loke Rim Bodyguard			exp 2 armour 0 weapon_lvl 1
-                    unit		Udege Marines					exp 1 armour 0 weapon_lvl 0										
-                    unit		Khandish Raiders			exp 2 armour 0 weapon_lvl 0
-                    unit		Khandish Raiders			exp 2 armour 0 weapon_lvl 0						
-                    unit		Arulad Dragonriders			exp 2 armour 0 weapon_lvl 0
-                    unit		Arulad Dragonriders			exp 2 armour 0 weapon_lvl 0					
-                    unit		Arulad Dragonguard		exp 2 armour 1 weapon_lvl 0
-					unit		Arulad Dragonguard		exp 2 armour 1 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0
-                    unit		Balchoth Tribesmen					exp 1 armour 0 weapon_lvl 0					
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0
-					unit		Balchoth Spearmen			exp 1 armour 1 weapon_lvl 0									
-                    unit		Daritai Warriors			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Warriors			exp 1 armour 0 weapon_lvl 0
-                    unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
-					unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0				
-                    unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0	
-                end
-                console_command auto_win attacker
-                siege_settlement rhun_attackers_3, Rhun, attack
-                spawn_army
-                    faction venice
-                    character	random_name, named character, age 23, x 460, y 341, direction W, label rhun_attackers_d
-                    traits		BadManRace 1, AruladClan 1, AIBoost 1, GoodAmbusher 2, GoodCommander 2, Just 1, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, TacticalSkill 1
-                    unit		Loke Rim Bodyguard					exp 2 armour 0 weapon_lvl 1
-					unit		Daritai Hunters			exp 1 armour 0 weapon_lvl 0			
-                    unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0
-					unit		Daritai Clansmen			exp 1 armour 0 weapon_lvl 0	
-                end
-                console_command auto_win attacker
-                siege_settlement rhun_attackers_d, Wintirion, attack
         end_if
         if I_LocalFaction sicily
             historic_event gondor_start
@@ -3887,180 +3229,23 @@ script
 			increment_kings_purse spain 1500
 			increment_kings_purse khand 500				
 			increment_kings_purse denmark -500			
-			console_command create_unit Morgul_Vale "Black Uruks" 3 3 0 0	
-			console_command create_unit Morgul_Vale "Orc Archers" 2 3 0 0	
-			console_command create_unit amon_hen_custom1 "Orc Scouts" 2 2 0 0
-            console_command create_unit amon_hen_custom1 "Raider Warband" 2 1 1 0
-            console_command create_unit amon_hen_custom1 "Raider Skirmishers" 2 0 0 0			
-			spawn_army
-                    faction england
-                    character	random_name, named character, age 26, x 347, y 226, hero_ability WHIPING
-                    traits		OrcRace 1, HeroAbilityOrcWhiping 1, BattleChivalryEvil 2, Bloodthirsty 1, GoodCommander 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk Bodyguard					exp 7 armour 0 weapon_lvl 0
-                    unit		Black Uruk Halberds			exp 2 armour 0 weapon_lvl 0
-                    unit		Black Uruk Halberds			exp 2 armour 0 weapon_lvl 0
-                    unit		Orc Archers			exp 2 armour 0 weapon_lvl 0
-                    unit		Orc Archers			exp 2 armour 0 weapon_lvl 0
-                    unit		Black Uruks			exp 3 armour 0 weapon_lvl 0
-                    unit		Black Uruks			exp 3 armour 0 weapon_lvl 0
-                    unit		Morgul Chosen			exp 3 armour 0 weapon_lvl 0
-                    unit		Morgul Chosen			exp 3 armour 0 weapon_lvl 0
-                    unit		Orc Host			exp 1 armour 0 weapon_lvl 0
-                    unit		Orc Host			exp 1 armour 0 weapon_lvl 0
-                end
-				spawn_army
-                    faction england
-                    character	random_name, named character, age 26, x 348, y 247, hero_ability WHIPING 
-                    traits		OrcRace 1, HeroAbilityOrcWhiping 1, BattleChivalryEvil 2, Bloodthirsty 1, GoodCommander 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Uruk Bodyguard					exp 5 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-                    unit		Loke-Gamp Rim			exp 2 armour 0 weapon_lvl 0
-                    unit		Loke-Gamp Rim			exp 2 armour 0 weapon_lvl 0
-					unit		Loke-Gamp Rim			exp 2 armour 0 weapon_lvl 0
-                    unit		Loke-Innas Rim			exp 0 armour 0 weapon_lvl 0
-                    unit		Loke-Innas Rim			exp 0 armour 0 weapon_lvl 0
-                end
-                spawn_army
-                    faction spain
-                    character	random_name, named character, age 26, x 340, y 123, direction N, label harad_attackers_8
-                    traits		BadManRace 1, Haradrim 1, AIBoost 1, GoodAdministrator 1, GoodAttacker 1, GoodCommander 2, BattleChivalryEvil 2, LogisticalSkill 1, StrategyChivalryEvil 1, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                    unit		Black Snake Guard					exp 5 armour 0 weapon_lvl 0
-                    unit		Southron Lancers			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Lancers			exp 2 armour 0 weapon_lvl 0					
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-                    unit		Southron Warband			exp 2 armour 0 weapon_lvl 0					
-                end
-                console_command auto_win attacker
-                siege_settlement harad_attackers_8, South_Mithlond, attack
-            spawn_army
-                faction khand
-                character	random_name, named character, age 31, x 473, y 105, direction S, label khand_attackers_3
-                traits		BadManRace 1, VariagTribe 1, AIBoost 1, BattleChivalryEvil 1, GoodAttacker 2, GoodCavalryGeneral 1, GoodCommander 2, HarshRuler 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                unit		Variag Nobles						exp 5 armour 1 weapon_lvl 0
-                unit		Khandish Raiders			exp 1 armour 1 weapon_lvl 0
-                unit		Khandish Raiders			exp 1 armour 1 weapon_lvl 0
-                unit		Khandish Raiders			exp 1 armour 1 weapon_lvl 0				
-                unit		Nomad Horsemen					exp 1 armour 1 weapon_lvl 0
-                unit		Nomad Horsemen					exp 1 armour 1 weapon_lvl 0				
-            end
-            campaign_wait 0.1
-            console_command auto_win attacker
-            siege_settlement khand_attackers_3, Far_Desert, attack
-            spawn_army
-                faction khand
-                character	random_name, named character, age 31, x 332, y 176, direction S, label khand_attackers_G
-                traits		BadManRace 1, WainriderTribe 1, AIBoost 1, BattleChivalryEvil 1, GoodDefender 2, GoodCavalryGeneral 1, GoodCommander 2, HarshRuler 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1, Energetic 1
-                unit		Variag Nobles						exp 5 armour 0 weapon_lvl 0
-                unit		Nomad Warriors				exp 1 armour 1 weapon_lvl 0
-                unit		Nomad Warriors				exp 1 armour 1 weapon_lvl 0
-                unit		Nomad Warriors				exp 1 armour 1 weapon_lvl 0				
-                unit		Khandish Hunters					exp 1 armour 1 weapon_lvl 0
-                unit		Khandish Hunters					exp 1 armour 1 weapon_lvl 0
-            end
-            campaign_wait 0.1
-            console_command auto_win attacker
-            siege_settlement khand_attackers_G, South_Ithilien, attack
         end_if
         if I_LocalFaction spain
-			console_command create_unit Far_Harad "Mumakil"
             historic_event harad_start
 			increment_kings_purse denmark 2000
 			increment_kings_purse sicily 1000	
-            spawn_army
-                faction denmark
-                character	random_name, named character, age 26, x 279, y 156, direction W, label DA_attackers_4
-                traits		DunedainRace 1, Amrothian 1, AIBoost 1, Disciplinarian 1, GoodAttacker 1, GoodCommander 2, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, PietyStarter 1
-                unit		Royal Swan-Guard     			exp 2 armour 1 weapon_lvl 0
-                unit		Nimrodel Mariners			exp 1 armour 0 weapon_lvl 0
-                unit		Amrothian Squires			exp 1 armour 0 weapon_lvl 0
-                unit		Amrothian Squires			exp 1 armour 0 weapon_lvl 0					
-                unit		Amrothian Guardsmen			exp 1 armour 0 weapon_lvl 0
-                unit		Amrothian Guardsmen			exp 1 armour 0 weapon_lvl 0					
-            end
-            campaign_wait 0.1
-            console_command auto_win attacker
-            siege_settlement DA_attackers_4, Barad_Harn, attack
-			spawn_army	
-				faction slave, sub_faction spain
-				character	Siraj, named character, age 24, x 366, y 131
-				traits		BadManRace 1, AIBoost 1, Brave 1, GoodCommander 2, GoodDefender 2, SiegeDefender 1, Loyal 1, LoyaltyStarter 1, PietyStarter 1
-				unit		Muhad Beastmasters		    exp 4 armour 0 weapon_lvl 0
-				unit		Muhad Tribesmen		    	exp 2 armour 0 weapon_lvl 0
-				unit		Muhad Tribesmen		    	exp 2 armour 0 weapon_lvl 0
-				unit		Haradrim Spearmen			exp 2 armour 0 weapon_lvl 0
-				unit		Haradrim Spearmen			exp 1 armour 1 weapon_lvl 0
-			end			
-			spawn_army	
-				faction slave, sub_faction spain
-				character	Tahar, named character, age 24, x 310, y 128
-				traits		BadManRace 1, AIBoost 1, Brave 1, GoodCommander 2, GoodDefender 2, SiegeDefender 1, Loyal 1, LoyaltyStarter 1, PietyStarter 1
-				unit		Black Snake Guard					exp 2 armour 0 weapon_lvl 0
-				unit		Southron Lancers			exp 0 armour 0 weapon_lvl 0
-				unit		Southron Warband			exp 2 armour 1 weapon_lvl 0
-				unit		Southron Warband			exp 2 armour 1 weapon_lvl 0
-				unit		Southron Warband			exp 2 armour 1 weapon_lvl 0
-				unit		Southron Archers			exp 2 armour 1 weapon_lvl 0
-				unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0
-				unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0
-			end			
-			spawn_army	
-				faction slave, sub_faction spain
-				character	Saahir, named character, age 24, x 282, y 145
-				traits		BadManRace 1, AIBoost 1, Brave 1, GoodCommander 2, GoodDefender 2, SiegeDefender 1, Loyal 1, LoyaltyStarter 1, PietyStarter 1
-				unit		Black Snake Guard					exp 2 armour 0 weapon_lvl 0
-				unit		Southron Lancers			exp 0 armour 0 weapon_lvl 0
-				unit		Southron Pikemen			exp 2 armour 0 weapon_lvl 0
-				unit		Southron Pikemen			exp 2 armour 0 weapon_lvl 0
-				unit		Southron Warband			exp 2 armour 0 weapon_lvl 0
-				unit		Southron Archers			exp 2 armour 0 weapon_lvl 0
-				unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0
-				unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0
-			end		
         end_if
         if I_LocalFaction teutonic_order
-            console_command create_unit Druwaith_Iaur "Greyflood Raiders" 2 2 0 0
-            console_command create_unit Druwaith_Iaur "Enedwaith Hunters" 2 1 0 0
-			console_command move_character bree_bandits_1, 434, 471
-			console_command move_character bree_bandits_2, 414, 477
             historic_event enedwaith_start
             historic_event enedwaith_united_start
 			increment_kings_purse aztecs 1000
 			increment_kings_purse normans 500
-            spawn_army
-                    faction aztecs
-                    character	random_name, named character, age 26, x 180, y 318, direction E, label dunland_attackers_2
-                    traits		MiddleManRace 1, Dunlending 1, AIBoost 1, Berserker 1, GoodAttacker 2, GoodCommander 2, BattleChivalryEvil 1, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1, Energetic 1
-                    unit		Chieftains Bodyguards			exp 3 armour 0 weapon_lvl 0
-                    unit		Beast Slayers		exp 2 armour 1 weapon_lvl 0					
-                    unit		Dunlending Pikemen			exp 1 armour 0 weapon_lvl 0
-                    unit		Dunlending Pikemen			exp 1 armour 0 weapon_lvl 0
-                    unit		Dunlending Raiders		exp 3 armour 0 weapon_lvl 0
-                    unit		Dunlending Raiders		exp 3 armour 0 weapon_lvl 0
-                    unit		Dunlending Horsemen		exp 1 armour 0 weapon_lvl 0				
-                end
-                campaign_wait 0.1
-                console_command auto_win attacker
-                siege_settlement dunland_attackers_2, Lone_lands, attack
         end_if
         if I_LocalFaction timurids	
             historic_event anduin_start
 			increment_kings_purse hre 500
 			increment_kings_purse poland 1000
 			increment_kings_purse gundabad 2500
-			console_command create_unit Deep_Mirkwood  "Warg Marauders" 2 1 0 0
-                spawn_army
-                    faction gundabad
-                    character	random_name, named character, age 24, x 255, y 437
-                    traits		SnowRace 1, AIBoost 1, Disciplinarian 1, GoodAttacker 1, GoodCommander 2, LogisticalSkill 1, Loyal 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1
-                    unit		Mountain Guard					exp 4 armour 0 weapon_lvl 0
-                    unit		Snow-Orc Spearmen				exp 2 armour 0 weapon_lvl 0
-                    unit		Snow-Orc Spearmen				exp 2 armour 0 weapon_lvl 0					
-                    unit		Snow-Orc Raiders	    		exp 1 armour 0 weapon_lvl 0
-                    unit		Snow-Orc Raiders	    		exp 1 armour 0 weapon_lvl 0			
-                    unit		Snow-Orc Scouts	    			exp 1 armour 0 weapon_lvl 0
-                    unit		Snow-Orc Scouts	    			exp 1 armour 0 weapon_lvl 0
-                end
         end_if
         if I_LocalFaction turks
             historic_event dunedain_start
@@ -4068,57 +3253,13 @@ script
 			increment_kings_purse hre -1000				
 			increment_kings_purse hungary -500							
             add_money portugal, 2000			
-			console_command create_unit Carn_Dum "Iron Crown Longbowmen" 1 1 0 0
-			console_command create_unit Carn_Dum "Iron Crown Halberdiers" 3 1 0 0
-			console_command create_unit Carn_Dum "Iron Crown Warriors" 2 1 0 0
-            spawn_army
-                    faction aztecs
-                    character	random_name, named character, age 26, x 180, y 318, direction E, label dunland_attackers_2
-                    traits		MiddleManRace 1, Dunlending 1,  AIBoost 1, Berserker 1, GoodAttacker 2, GoodCommander 2, BattleChivalryEvil 1, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1, Energetic 1
-                    unit		Chieftains Bodyguards			exp 7 armour 0 weapon_lvl 0
-                    unit		Beast Slayers		exp 2 armour 1 weapon_lvl 0	
-                    unit		Beast Slayers		exp 2 armour 1 weapon_lvl 0						
-                    unit		Dunlending Pikemen			exp 1 armour 0 weapon_lvl 0
-                    unit		Dunlending Pikemen			exp 1 armour 0 weapon_lvl 0
-                    unit		Dunlending Raiders		exp 3 armour 0 weapon_lvl 0
-                    unit		Dunlending Raiders		exp 3 armour 0 weapon_lvl 0
-                    unit		Dunlending Horsemen		exp 1 armour 0 weapon_lvl 0				
-                end
-                campaign_wait 0.1
-                console_command auto_win attacker
-                siege_settlement dunland_attackers_2, Lone_lands, attack	
         end_if
         if I_LocalFaction venice
-            console_command create_unit Farest_Rhun "Rhovanion Spearmen" 1 2 0 1
-            console_command create_unit Farest_Rhun "Rhovanion Hunters" 2 1 0 0
-            console_command create_unit Tirith_Thoron "Rhovanion Riders" 1 2 1 0
-            console_command create_unit Tirith_Thoron "Rhovanion Spearmen" 2 1 0 1
-            console_command create_unit Tirith_Thoron "Rhovanion Hunters" 2 1 0 1
             historic_event rhun_start
 			increment_kings_purse byzantium 2000
 			increment_kings_purse moors 2000
 			increment_kings_purse scotland 500
-			increment_kings_purse gundabad -500	
-                spawn_army
-                    faction byzantium
-                    character	random_name, named character, age 24, x 400, y 351, direction E, label dor_attackers_R
-                    traits		GoodManRace 1, Dorwinrim 1, AIBoost 1, GoodAdministrator 2, StrategyChivalryGood 1, GoodAttacker 1, GoodCommander 2, Loyal 2, LoyaltyStarter 1, NightBattleCapable 1, PietyStarter 1, Just 1, Energetic 1
-                    unit		High Paladins				        exp 7 armour 0 weapon_lvl 0
-                    unit		Thorn Bladesmen				exp 3 armour 0 weapon_lvl 0
-                    unit		Thorn Bladesmen 				exp 3 armour 0 weapon_lvl 0
-                    unit		Thorn Guard				exp 2 armour 0 weapon_lvl 0
-                    unit		Thorn Guard 				exp 2 armour 0 weapon_lvl 0
-	                unit		Thorn Guard 				exp 2 armour 0 weapon_lvl 0				
-                    unit		Thorn Crossbowmen				exp 3 armour 0 weapon_lvl 0
-                    unit		Thorn Crossbowmen 			exp 3 armour 0 weapon_lvl 0	
-                    unit		Thorn Crossbowmen 			exp 3 armour 0 weapon_lvl 0						
-					unit		Thorn Riders					exp 2 armour 0 weapon_lvl 0
-					unit		Thorn Riders					exp 2 armour 0 weapon_lvl 0					
-					unit		Thorn Patrolers			exp 2 armour 0 weapon_lvl 0
-					unit		Thorn Patrolers			exp 2 armour 0 weapon_lvl 0					
-                end
-                console_command auto_win attacker
-                siege_settlement dor_attackers_R, North_Rhovanion, attack				
+			increment_kings_purse gundabad -500				
         end_if
         historic_event gamenotes
         terminate_monitor
