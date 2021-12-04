@@ -89,7 +89,7 @@ def assign_settlements(s, f):
 
     for faction in f[:-1]:
         capital = rand.choice(remaining_s, 1)
-        remaining_s = [i for i in remaining_s if i is not capital]
+        del remaining_s[remaining_s.index(capital)]
         faction.append(capital)
 
     # Add all remaining settlements to rebels
