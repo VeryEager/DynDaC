@@ -1,7 +1,9 @@
 import re
+from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
+rand.seed(1)
 PATH = "campaign/"
 
 # Global Generation Parameters
@@ -9,6 +11,7 @@ MONEY_MIN = 5000
 MONEY_MAX = 15000
 PURSE_MIN = 3
 PURSE_MAX = 7.5
+CITIES_PER = 1
 
 # Load relevant TXT files
 strat = open(PATH + "descr_strat.txt", "r")
@@ -73,3 +76,46 @@ for faction in Split_Factions:
     Settlements.extend(details[1])
     Factions.append([details[0], details[2], details[3]])
 
+
+def assign_settlements(s, f):
+    """
+    Assign random starting locations to each faction
+
+    :param s: Settlements
+    :param f: Factions
+    :return:
+    """
+    remaining_s = s
+
+    for faction in f[:-1]:
+        capital = rand.choice(remaining_s, 1)
+        remaining_s = [i for i in remaining_s if i is not capital]
+        faction.append(capital)
+
+    # Add all remaining settlements to rebels
+    f[-1].append(remaining_s)
+
+
+def write(c, f, d):
+    """
+    Writes the generated scenario to descr_strat
+
+    :param c: Campaign Information
+    :param f: Faction Information
+    :param d: Diplomacy Information
+    :return:
+    """
+    descr_strat = open("descr_strat.txt", "a")
+    descr_strat.write(c)
+
+    for faction in f:
+        text_sett = "".join(faction[3])
+        text_char = "".join(faction[1])
+        descr_strat.write(faction[0]+text_sett+text_char+faction[2])
+
+    descr_strat.write(d)
+
+
+# Re-assign starting settlements & export
+assign_settlements(Settlements, Factions)
+write(Campaign, Factions, Diplomacy)
