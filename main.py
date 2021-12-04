@@ -115,17 +115,16 @@ def colour_from_name(name):
     :param name: name of the province
     :return: RGB of the province on map_regions
     """
-    parsed = d_regions.split(name)
-    print(parsed[2])
+    non_legion = r"}\n\s*" + name + "|^" + name  # non-legion regex
+    parsed = re.split(non_legion, d_regions)
     parsed = re.split(r"([0-9]+\s[0-9]+\s[0-9]+\s)", parsed[1])
-    print(parsed)
     r, g, b = parsed[1].split()
     return int(r), int(g), int(b)
 
 
 def pixel_map(mp):
     """
-    Extracts the pixel values from the TGA
+    Extracts the pixel values from the TGA file
 
     :param mp: the map to extract the values from
     :return:
@@ -143,7 +142,6 @@ def pixel_map(mp):
     return pixels
 
 
-
 def find_settlement_coords(colour, mp):
     """
     Identifies the X,Y coord vector given a region colour & regions map
@@ -156,16 +154,11 @@ def find_settlement_coords(colour, mp):
     x, y = (0, 0)
     for indr, row in enumerate(mp):
         for indp, pix in enumerate(row):
-            if pix == (0,0,0):
+            if pix == (0, 0, 0):
                 if mp[indr][indp-1] == colour or mp[indr][indp+1] == colour:
                     x = indr
                     y = indp
     return x, y
-
-
-print(name_from_text(Settlements[1]))
-coords = find_settlement_coords(colour_from_name(name_from_text(Settlements[1])), pixel_map(m_regions))
-print(coords)
 
 
 def tile_is_valid(x, y, mp):
@@ -187,12 +180,11 @@ def assign_chars(f):
     :param f: Factions
     :return:
     """
-    for faction in f:
-        # Locate the X,Y of the
-        pass
+    for fac in f[:-1]:
+        capital = find_settlement_coords(colour_from_name(name_from_text(fac[3][0])), pixel_map(m_regions))
+        for ch in fac[1]:
+            pass
     return
-
-
 
 
 def write(c, f, d):
@@ -216,6 +208,7 @@ def write(c, f, d):
     descr_strat.write(d)
 
 
-# Re-assign starting settlements & export
+# Re-assign starting locations & export
 assign_settlements(Settlements, Factions)
+assign_chars(Factions)
 write(Campaign, Factions, Diplomacy)
