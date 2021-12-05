@@ -3,7 +3,7 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(3077)
+rand.seed(2000)
 PATH = "campaign/"
 
 # Global Constants
@@ -21,10 +21,10 @@ COL_PORT = (255, 255, 255)
 COL_FEATURELESS = (0, 0, 0)
 
 # Global Generation Parameters
-MONEY_MIN = 5000
-MONEY_MAX = 15000
-PURSE_MIN = 3
-PURSE_MAX = 7.5
+FUNDS_DEF = 5000
+FUNDS_PER = 1000  # Starting gold per starting char
+PURSE_DEF = 500
+PURSE_PER = 250  # Extra per-turn income per starting char
 CITIES_PER = 1
 REMOVE_GENERALS = True
 
@@ -264,6 +264,19 @@ def assign_chars(f):
         fac[1] = new_chars  # Add changed character locations
 
 
+def update_funds():
+    """
+    Naively adjusts funds based on number of characters in faction
+
+    :return:
+    """
+    for fac in Factions[:-1]:
+        chars = len(fac[1])+1   # Obtain starting number of chars
+        new_funds = "denari\t" + str(FUNDS_DEF+chars*FUNDS_PER) + "\ndenari_kings_purse\t" + str(PURSE_DEF+chars*PURSE_PER)
+        funds = re.sub(r"(denari\s+[0-9]+\s*\n\s*denari_kings_purse\s+[0-9]+)", new_funds, fac[0])
+        fac[0] = funds
+
+
 def write(c, f, d):
     """
     Writes the generated scenario to descr_strat
@@ -289,4 +302,5 @@ pixel_gts = pixel_map(m_ground_types)
 # Re-assign starting locations & export
 assign_settlements(Settlements, Factions)
 assign_chars(Factions)
+update_funds()
 write(Campaign, Factions, Diplomacy)
