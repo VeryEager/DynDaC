@@ -3,8 +3,22 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(48)
+rand.seed(2077)
 PATH = "campaign/"
+
+# Global Constants
+# map_ground_types
+COL_MOUNT = (98, 65, 65)
+COL_IMPASS = (64, 64, 64)
+COL_SHALLOW = (196, 0, 0)
+COL_DEEP = (64, 0, 0)
+COL_DENSE = (0, 64, 0)
+# map_regions
+COL_SEA = (41, 140, 233)
+COL_SETTLE = (0, 0, 0)
+COL_PORT = (255, 255, 255)
+# map_features
+COL_FEATURELESS = (0, 0, 0)
 
 # Global Generation Parameters
 MONEY_MIN = 5000
@@ -25,6 +39,8 @@ m_regions = Image.open(PATH + "map_regions.tga")  # Need for settlement location
 m_regions = ImageOps.flip(m_regions)
 m_ground_types = Image.open(PATH + "map_ground_types.tga")  # To track valid/invalid tiles
 m_ground_types = ImageOps.flip(m_ground_types)
+m_rivers = Image.open(PATH + "map_features.tga")  # For invalid river tiles
+m_rivers = ImageOps.flip(m_rivers)
 
 
 def split_strat_fac(desc_strat):
@@ -41,7 +57,7 @@ def split_strat_fac(desc_strat):
 
 def split_strat_reg_char(faction):
     """
-    Splits the found faction details into regions & characters
+    Splits faction details into settlements, characters, and constants
 
     :param faction:
     :return: Faction Info, Settlements[], Characters[], Family
@@ -156,7 +172,7 @@ def find_settlement_coords(colour, mp):
     x, y = (0, 0)
     for indr, row in enumerate(mp):
         for indp, pix in enumerate(row):
-            if pix == (0, 0, 0):
+            if pix == COL_SETTLE:
                 if mp[indr][indp-1] == colour or mp[indr][indp+1] == colour:
                     x = indr
                     y = indp
@@ -178,7 +194,7 @@ def get_surrounding_tiles(x, y):
     return tiles
 
 
-def tile_is_valid(x, y, mp, facs, self_fac, strat):
+def tile_is_valid(x, y, facs, self_fac, strat):
     """
     Ensures a chosen tile is valid to be placed on provided the terrain is adequate
 
@@ -205,7 +221,21 @@ def tile_is_valid(x, y, mp, facs, self_fac, strat):
         if re.search(r"x\s" + str(x) + r",\sy\s" + str(y), ch) is not None:
             return False  # characters in same faction shouldn't overlap
 
-    # BASIC MAP CHECK
+    p_gts = pixel_map(m_ground_types)
+    p_regions = pixel_map(m_regions)
+    p_rivers = pixel_map(m_rivers)
+
+    if p_regions[x][y] == COL_SETTLE or p_regions[x][y] == COL_SEA:
+        return False  # can't be on another settlement, nor the ocean
+
+    if p_rivers[x][y] != COL_FEATURELESS:
+        return False  # chars shouldn't be on mt doom, rivers, etc
+
+    gts = [p_gts[x*2][y*2], p_gts[x*2+1][y*2+1], p_gts[x*2+1][y*2], p_gts[x*2][y*2+1]]
+    if COL_SHALLOW in gts or COL_DEEP in gts or COL_DENSE in gts or COL_IMPASS in gts or COL_MOUNT in gts:
+        # TODO: check if this actually finds the correct tile
+        return False  # chars can't be placed in wrong-terrain tiles
+
     return True
 
 
@@ -225,7 +255,7 @@ def assign_chars(f):
             else:
                 offset = rand.randint(-10, 10, 2)
                 pos = capital + offset
-                while not tile_is_valid(pos[0], pos[1], pixel_gts, Factions, new_chars, Diplomacy):
+                while not tile_is_valid(pos[0], pos[1], Factions, new_chars, Diplomacy):
                     offset = rand.randint(-10, 10, 2)
                     pos = capital + offset
                 ch = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(pos[0]) + ", y " + str(pos[1]), ch)
