@@ -3,7 +3,7 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(2077)
+rand.seed(3077)
 PATH = "campaign/"
 
 # Global Constants
@@ -173,7 +173,8 @@ def find_settlement_coords(colour, mp):
     for indr, row in enumerate(mp):
         for indp, pix in enumerate(row):
             if pix == COL_SETTLE:
-                if mp[indr][indp-1] == colour or mp[indr][indp+1] == colour:
+                if mp[indr][indp-1] == colour or mp[indr][indp+1] == colour or mp[indr-1][indp] == colour \
+                        or mp[indr+1][indp] == colour:
                     x = indr
                     y = indp
     return x, y
