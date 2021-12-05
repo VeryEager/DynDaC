@@ -3,7 +3,7 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(1)
+rand.seed(48)
 PATH = "campaign/"
 
 # Global Generation Parameters
@@ -12,6 +12,7 @@ MONEY_MAX = 15000
 PURSE_MIN = 3
 PURSE_MAX = 7.5
 CITIES_PER = 1
+REMOVE_GENERALS = True
 
 # Load relevant TXT files
 d_strat = open(PATH + "descr_strat.txt", "r")
@@ -162,16 +163,50 @@ def find_settlement_coords(colour, mp):
     return x, y
 
 
-def tile_is_valid(x, y, mp):
+def get_surrounding_tiles(x, y):
     """
-    Ensures a chosen tile is valid to be placed on provided the terrain is adequate
+    Retrieves the X, Y coords of the 8 tile surrounding some point
 
     :param x:
     :param y:
-    :param mp:
     :return:
     """
-    return
+    tiles = [(-1, -1), (-1, 0), (-1, 1),
+            (0, -1), (0, 0), (0, 1),
+            (1, -1), (1, 0), (1, 1)]
+    tiles = [(t[0]+x, t[1]+y) for t in tiles]
+    return tiles
+
+
+def tile_is_valid(x, y, mp, facs, self_fac, strat):
+    """
+    Ensures a chosen tile is valid to be placed on provided the terrain is adequate
+
+    :param x: x coord
+    :param y: y coord
+    :param mp: Pixel map of map_ground_types
+    :param facs: Faction starting location details
+    :param self_fac: Own Faction, consisting of changed parameters.
+    :param strat: Strat details (watchtowers, forts, etc)
+    :return: True if position is available, False otherwise
+    """
+    # TODO: again, horribly inefficient. just enumerates all known positions
+    for tile in get_surrounding_tiles(x, y):
+        if re.search(r"" + str(tile[0]) + r"\s" + str(tile[1]), strat) is not None:
+            return False    # if fort/watchtower is on the position
+
+    for fac in facs[:-1]:  # don't bother with rebel overlap
+        for ch in fac[1]:
+            if re.search(r"x\s" + str(x) + r",\sy\s" + str(y), ch) is not None:
+                return False  # characters from different factions shouldn't overlap
+            # TODO: side effect, chars can't be put @ original pos's of their own faction
+
+    for ch in self_fac:
+        if re.search(r"x\s" + str(x) + r",\sy\s" + str(y), ch) is not None:
+            return False  # characters in same faction shouldn't overlap
+
+    # BASIC MAP CHECK
+    return True
 
 
 def assign_chars(f):
@@ -185,11 +220,14 @@ def assign_chars(f):
         capital = find_settlement_coords(colour_from_name(name_from_text(fac[3][0])), pixel_map(m_regions))
         new_chars = []
         for ch in fac[1]:
-            if "leader," in ch:
+            if "leader," in ch:  # don't need to check availability for leaders; always in a settlement
                 ch = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(capital[0]) + ", y " + str(capital[1]), ch)
             else:
                 offset = rand.randint(-10, 10, 2)
                 pos = capital + offset
+                while not tile_is_valid(pos[0], pos[1], pixel_gts, Factions, new_chars, Diplomacy):
+                    offset = rand.randint(-10, 10, 2)
+                    pos = capital + offset
                 ch = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(pos[0]) + ", y " + str(pos[1]), ch)
             new_chars.append(ch)
         fac[1] = new_chars  # Add changed character locations
@@ -216,6 +254,7 @@ def write(c, f, d):
     descr_strat.write(d)
 
 
+pixel_gts = pixel_map(m_ground_types)
 # Re-assign starting locations & export
 assign_settlements(Settlements, Factions)
 assign_chars(Factions)
