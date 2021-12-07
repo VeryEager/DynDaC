@@ -3,7 +3,7 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(2000)
+rand.seed(1)
 PATH = "campaign/"
 
 # Global Constants
@@ -180,6 +180,18 @@ def find_settlement_coords(colour, mp):
     return x, y
 
 
+def loc_from_text(text):
+    """
+    Extracts the coordinate vector (x,y) from a character's descr_strat entry
+
+    :param text: The text to parse
+    :return:
+    """
+    loc = re.split(r"(x\s[0-9]+,\sy\s[0-9]+)", text)[1]
+
+    return loc
+
+
 def get_surrounding_tiles(x, y):
     """
     Retrieves the X, Y coords of the 8 tile surrounding some point
@@ -277,6 +289,28 @@ def update_funds():
         fac[0] = funds
 
 
+def disable_overlapping_armies(target, Facs):
+    """
+    Removes all armies from faction target which overlap with a force from any other faction
+
+    :param target: Target faction
+    :param Facs: remaining factions
+    :return:
+    """
+    new_chs = []
+    for ch in target[1]:
+        overlap = False
+        for fac in Facs:
+            for fch in fac[1]:
+                ch_loc = loc_from_text(ch).strip()
+                fch_loc = loc_from_text(fch).strip()
+                if ch_loc == fch_loc:
+                    overlap = True
+        if not overlap:
+            new_chs.append(ch)  # only use armies who have NO overlap
+    target[1] = new_chs
+
+
 def write(c, f, d):
     """
     Writes the generated scenario to descr_strat
@@ -302,5 +336,6 @@ pixel_gts = pixel_map(m_ground_types)
 # Re-assign starting locations & export
 assign_settlements(Settlements, Factions)
 assign_chars(Factions)
+disable_overlapping_armies(Factions[-1], Factions[:-1])
 update_funds()
 write(Campaign, Factions, Diplomacy)
