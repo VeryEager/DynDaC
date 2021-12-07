@@ -114,6 +114,17 @@ def assign_settlements(s, f):
     f[-1].append(remaining_s)
 
 
+def facname_from_text(text):
+    """
+    Parses the name of the faction from descr_strat entry
+
+    :param text: text entry to retrieve the name from
+    :return: string of the faction's internal name
+    """
+    spl = re.split(r"faction\s([a-z|_]+),", text)
+    return spl[1]
+
+
 def charname_from_text(text):
     """
     Extracts a character's name from text
@@ -262,6 +273,24 @@ def tile_is_valid(x, y, facs, self_fac, strat):
     return True
 
 
+def get_names(fac):
+    """
+    Retrieves valid names for characters (those which aren't found in descr_strat)
+
+    :param fac: entry for the faction
+    :return:
+    """
+    name = facname_from_text(fac[0])
+    possible = open("descr_names.txt", "r")
+    possible = possible.read()
+    possible = re.split(r"faction:\s" + name + r"[\s]+characters[\s]+([a-z|\s|_]+)women", possible, flags=re.IGNORECASE)
+    possible = re.split(r"[\s]+", possible[1])
+
+    used_names = [charname_from_text(ch) for ch in fac[1]]
+    possible = [n for n in possible[:-1] if n not in used_names]
+    return possible
+
+
 def add_agents(typ, facs):
     """
     Adds the corresponding type of agent to a faction if the faction lacks
@@ -278,8 +307,7 @@ def add_agents(typ, facs):
             if typ in ch:
                 has = True  # ignore factions with the agent
         if not has:
-            name = rand.choice(fac[1], 1)
-            name = charname_from_text(name[0])
+            name = rand.choice(get_names(fac))
             agent = re.sub(r"NAME", name, agent)
             fac[1].append(agent)
 
@@ -366,7 +394,7 @@ def write(c, f, d):
 
 pixel_gts = pixel_map(m_ground_types)
 # Re-assign starting locations & export
-# add_agents("diplomat", Factions[:-1])
+add_agents("diplomat", Factions[:-1])
 assign_settlements(Settlements, Factions)
 assign_chars(Factions)
 disable_overlapping_armies(Factions[-1], Factions[:-1])
