@@ -1,0 +1,12 @@
+#STANDARD
+unit		Daritai Clansmen			exp 0 armour 0 weapon_lvl 0
+unit		Daritai Hunters			exp 0 armour 0 weapon_lvl 0
+unit		Balchoth Tribesmen		exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Daritai Crossbowmen		exp 0 armour 0 weapon_lvl 0
+unit		Daritai Warriors			exp 0 armour 0 weapon_lvl 0
+unit		Balchoth Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		Arulad Dragonguard			exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Loke Rim Bodyguard			exp 0 armour 0 weapon_lvl 0
+unit		Loke-Nar Rim			exp 0 armour 0 weapon_lvl 0

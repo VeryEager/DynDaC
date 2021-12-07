@@ -1,0 +1,12 @@
+#STANDARD
+unit		Orc Maulers							exp 0 armour 0 weapon_lvl 0
+unit		Orc Scouts				exp 0 armour 0 weapon_lvl 0
+unit		Orc Host				exp 0 armour 0 weapon_lvl 0
+unit		Orc Band				exp 0 armour 0 weapon_lvl 0
+unit		Orc Raiders		exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Morannon Guard				exp 0 armour 0 weapon_lvl 0
+unit		Orc Archers				exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Temple Marksmen				exp 0 armour 0 weapon_lvl 0
+unit		Temple Wards				exp 0 armour 0 weapon_lvl 0

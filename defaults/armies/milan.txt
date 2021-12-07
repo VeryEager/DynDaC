@@ -1,0 +1,13 @@
+#STANDARD
+unit		Eorling Spearmen				exp 0 armour 0 weapon_lvl 0
+unit		Eorling Archers				exp 0 armour 0 weapon_lvl 0
+unit		Peasant Scouts						exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Rohirrim Archers				exp 0 armour 0 weapon_lvl 0
+unit		Rohirrim					    exp 0 armour 0 weapon_lvl 0
+unit		Eored Swordsmen				exp 0 armour 0 weapon_lvl 0
+unit		Eorling Spearmen				exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Helmingas				exp 0 armour 0 weapon_lvl 0
+unit		Riddermark Axemen					exp 0 armour 0 weapon_lvl 0
+unit		Rohan Bodyguard						exp 0 armour 0 weapon_lvl 0

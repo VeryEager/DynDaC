@@ -1,0 +1,11 @@
+#STANDARD
+unit		Erebor Infantry					exp 0 armour 0 weapon_lvl 0 
+unit		Dwarven Labourers				exp 0 armour 0 weapon_lvl 0 
+unit		Erebor Axethrowers				exp 0 armour 0 weapon_lvl 0 
+#UNCOMMON
+unit		Kings Axes						exp 0 armour 0 weapon_lvl 0 
+unit		Kings Warriors					exp 0 armour 0 weapon_lvl 0 
+#RARE
+unit		Axeguard of Erebor				exp 0 armour 0 weapon_lvl 0 
+unit		Durins Guard					exp 0 armour 0 weapon_lvl 0 
+unit		Dragonslayers					exp 0 armour 0 weapon_lvl 0 

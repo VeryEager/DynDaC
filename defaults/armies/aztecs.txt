@@ -1,0 +1,10 @@
+#STANDARD
+unit		Clan Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		Clan Axemen			exp 0 armour 0 weapon_lvl 0
+unit		Clan Hunters			exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Sellswords		exp 0 armour 0 weapon_lvl 0
+unit		Beast Slayers				exp 0 armour 0 weapon_lvl 0
+unit		Isenmach Axemen				exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Guardians of Dunland				exp 0 armour 0 weapon_lvl 0

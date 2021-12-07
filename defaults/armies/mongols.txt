@@ -1,0 +1,11 @@
+#STANDARD
+unit		Woodland Scouts			exp 0 armour 0 weapon_lvl 0
+unit		Woodland Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		Woodland Warriors			exp 0 armour 0 weapon_lvl 0 
+unit		Woodland Wardens			exp 0 armour 0 weapon_lvl 0 
+#UNCOMMON
+unit		Maethyr i-Thewair		exp 0 armour 0 weapon_lvl 0
+unit 		Woodland Horsearchers	exp 0 armour 0 weapon_lvl 0 
+#RARE
+unit		Elvenkings Bowguard				exp 0 armour 0 weapon_lvl 0
+unit 		Elvenkings Axeguard				exp 0 armour 0 weapon_lvl 0 

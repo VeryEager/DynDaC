@@ -1,0 +1,11 @@
+#STANDARD
+unit		Southron Archers			exp 0 armour 0 weapon_lvl 0
+unit		Southron Warband			exp 0 armour 0 weapon_lvl 0
+unit		Haradrim Spearmen			exp 0 armour 0 weapon_lvl 0 
+unit		Haradrim Archers			exp 0 armour 0 weapon_lvl 0 
+#UNCOMMON
+unit		Southron Lancers			exp 0 armour 0 weapon_lvl 0 
+unit		Southron Pikemen			exp 0 armour 0 weapon_lvl 0 
+#RARE
+unit		Black Snake Guard					exp 0 armour 0 weapon_lvl 0 
+unit		Hasharii Blades						exp 0 armour 0 weapon_lvl 0 

@@ -1,0 +1,11 @@
+#STANDARD
+unit		Local Militia					exp 0 armour 0 weapon_lvl 0
+unit		Local Archers					exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Dunedain Wardens				exp 0 armour 0 weapon_lvl 0
+unit		Dunedain Rangers				exp 0 armour 0 weapon_lvl 0
+unit		Cardolan Sentinels				exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Dunedain Steelbowmen			exp 0 armour 0 weapon_lvl 0
+unit		Dunedain Bodyguard				exp 0 armour 0 weapon_lvl 0
+unit		Arthedain Footmen				exp 0 armour 0 weapon_lvl 0

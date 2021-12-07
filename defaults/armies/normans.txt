@@ -1,0 +1,12 @@
+#STANDARD
+unit		Breeland Militia			exp 0 armour 0 weapon_lvl 0
+unit		Archer Militia			exp 0 armour 0 weapon_lvl 0
+unit		Woodland Hunters			exp 0 armour 0 weapon_lvl 0
+unit		Watch Shirriffs					exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Greenway Cavalry			exp 0 armour 0 weapon_lvl 0
+unit		Greenway Shieldmen			exp 0 armour 0 weapon_lvl 0
+unit		Bandobras Archers			exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Breeland Bodyguard					exp 0 armour 0 weapon_lvl 0
+unit		Gate Keepers				exp 0 armour 0 weapon_lvl 0

@@ -1,0 +1,10 @@
+#STANDARD
+unit		Snow-Orc Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		Snow-Orc Raiders			exp 0 armour 0 weapon_lvl 0
+unit		Snow-Orc Scouts			exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Blackshield Archers	    			exp 0 armour 0 weapon_lvl 0
+unit		Blackshield Warband					exp 0 armour 0 weapon_lvl 0
+unit		Blackshield Warriors				exp 0 armour 0 weapon_lvl 0	
+#RARE
+unit		Pale Uruks			exp 0 armour 0 weapon_lvl 0

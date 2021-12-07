@@ -1,0 +1,11 @@
+#STANDARD
+unit		Amrothian Guardsmen				exp 0 armour 0 weapon_lvl 0
+unit		Amrothian Archers					exp 0 armour 0 weapon_lvl 0
+unit		Gondor Militia			exp 0 armour 0 weapon_lvl 0
+unit		Gondor Cavalry Militia			exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Sea-ward Spearmen	    exp 0 armour 0 weapon_lvl 0
+unit		Nimrodel Mariners				    exp 0 armour 0 weapon_lvl 0
+#RARE
+unit		Talon Knights				    exp 0 armour 0 weapon_lvl 0
+unit		Royal Swan-Guard         			exp 0 armour 0 weapon_lvl 0
