@@ -1,4 +1,5 @@
 import re
+from GarrisonGenerator import GarrisonGenerator
 from numpy import random as rand
 from PIL import Image, ImageOps
 
@@ -88,11 +89,16 @@ del Split_Factions[-2]
 
 # Subdivide factions into global pool of settlements & faction-specific details (family trees, armies, etc)
 Factions = []
-Settlements = []
+Settlements = []  # all settlements in the map
+OrigSettlements = []  # original settlements assigned to each faction
+set = 0
 for faction in Split_Factions:
     details = split_strat_reg_char(faction)
     Settlements.extend(details[1])
+    set += len(details[1]) if "slave" not in details[0] else 0
     Factions.append([details[0], details[2], details[3]])
+    if "slave" not in details[0]:
+        OrigSettlements.append(details[1])  # don't include slave in original settlements
 
 
 def assign_settlements(s, f):
@@ -146,6 +152,17 @@ def name_from_text(text):
     region = re.split(r"(\bregion\s(?i)[a-z_]+Province)", text)
     region = region[1].split()
     return region[1]
+
+
+def tier_from_text(text):
+    """
+    Parses the tier of a settlement from its descr_strat entry
+
+    :param text: original descr_strat text
+    :return: string form of the settlement tier
+    """
+    settlement = re.split(r"level\s([a-z|_]+)\n", text)
+    return settlement[1]
 
 
 def colour_from_name(name):
@@ -285,9 +302,8 @@ def get_names(fac):
     possible = possible.read()
     possible = re.split(r"faction:\s" + name + r"[\s]+characters[\s]+([a-z|\s|_]+)women", possible, flags=re.IGNORECASE)
     possible = re.split(r"[\s]+", possible[1])
-
     used_names = [charname_from_text(ch) for ch in fac[1]]
-    possible = [n for n in possible[:-1] if n not in used_names]
+    possible = [n for n in possible[:-1] if n not in used_names and n not in fac[2]]
     return possible
 
 
@@ -334,6 +350,42 @@ def assign_chars(f):
                 ch = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(pos[0]) + ", y " + str(pos[1]), ch)
             new_chars.append(ch)
         fac[1] = new_chars  # Add changed character locations
+
+
+def garrisons_to_abandoned():
+    """
+    Assigns culture-appropriate garrisons to rebel settlements.
+
+    :return:
+    """
+    gen = GarrisonGenerator()
+    gen.__load_templates__()
+
+    new_chars = []
+    for i, settles in enumerate(OrigSettlements):
+        fac = facname_from_text(Factions[i][0])
+        for city in settles:
+            used = False
+            for fact in Factions[:-1]:
+                if city in fact[3]:
+                    used = True
+
+            if not used:  # if the abandoned settlement is not in use by any faction then we add rebel army
+                template = open("defaults/rebel_army.txt")
+                template = template.read()
+
+                tier = tier_from_text(city)
+                new_army = gen.generate_garrisons(fac, tier)
+
+                for unit in new_army:
+                    template += unit + "\n"
+                template += "\n"
+
+                # now we update the x, y of the new army
+                pos = find_settlement_coords(colour_from_name(name_from_text(city)), pixel_map(m_regions))
+                template = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(pos[0]) + ", y " + str(pos[1]), template)
+                new_chars.append(template)
+    Factions[-1][1].extend(new_chars)
 
 
 def update_funds():
@@ -398,5 +450,6 @@ add_agents("diplomat", Factions[:-1])
 assign_settlements(Settlements, Factions)
 assign_chars(Factions)
 disable_overlapping_armies(Factions[-1], Factions[:-1])
+garrisons_to_abandoned()
 update_funds()
 write(Campaign, Factions, Diplomacy)

@@ -1,0 +1,2 @@
+character	sub_faction sicily, Thorondir, general, male, age 23, x 283, y 147
+army
