@@ -10,7 +10,5 @@ unit		Ithilien Rangers				exp 0 armour 0 weapon_lvl 0
 unit		Gondor Archers						exp 0 armour 0 weapon_lvl 0
 unit		Gondor Spearmen						exp 0 armour 0 weapon_lvl 0
 unit		Gondor Infantry						exp 0 armour 0 weapon_lvl 0
-unit		Lamedon Clansmen			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Lossarnach Axemen			exp 0 armour 0 weapon_lvl 0
 unit		Gondor Bodyguard					exp 0 armour 0 weapon_lvl 0
