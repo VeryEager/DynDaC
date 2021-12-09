@@ -1,10 +1,11 @@
 import re
+from math import ceil
 from GarrisonGenerator import GarrisonGenerator
 from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(1)
+rand.seed(2)
 PATH = "campaign/"
 
 # Global Constants
@@ -27,6 +28,7 @@ FUNDS_PER = 1000  # Starting gold per starting char
 PURSE_DEF = 500
 PURSE_PER = 250  # Extra per-turn income per starting char
 CITIES_PER = 1
+STARTING_CULT = 33  # Starting religion of faction's capital province
 REMOVE_GENERALS = True
 
 # Load relevant TXT files
@@ -177,6 +179,20 @@ def colour_from_name(name):
     parsed = re.split(r"([0-9]+\s[0-9]+\s[0-9]+\s)", parsed[1])
     r, g, b = parsed[1].split()
     return int(r), int(g), int(b)
+
+
+def culture_from_name(name):
+    """
+    Retrieves the starting cultures from a region via descr_regions
+
+    :param name: name of the region
+    :return: array containing the culture distribution
+    """
+    non_legion = r"}\n\s*" + name + "|^" + name  # non-legion regex
+    parsed = re.split(non_legion, d_regions)
+    parsed = re.split(r"religions\s{\s([a-z|\s|_|[0-9]+)\s}", parsed[1])
+    cults = parsed[1].split()
+    return cults
 
 
 def pixel_map(mp):
@@ -401,6 +417,44 @@ def update_funds():
         fac[0] = funds
 
 
+def update_culture(facs):
+    """
+    Ensures factions have some amount of starting culture in their new capital
+
+    :param facs: All factions to update cultures for
+    :return:
+    """
+    for fac in facs:
+        facname = facname_from_text(fac[0])
+
+        # Split at the faction
+        sm_factions = open("descr_sm_factions.txt", "r")
+        sm_factions = sm_factions.read()
+        rel = re.split(r"faction\s+" + facname + r"\n[a-z|\s|_]+\nreligion\s+([a-z]+)\n", sm_factions)
+        rel = rel[1]
+
+        # Get the current cultures for the capital city & their strengths
+        cults = culture_from_name(name_from_text(fac[3][0]))
+        print(cults)
+        cult_strengths = cults[1::2]
+        cult_strengths = [int(s) for s in cult_strengths]
+        cults = cults[0::2]
+
+        # Reduce each active culture by an assigned proportion.
+        active_cults = sum([1 for i in cult_strengths if i != 0])
+        ratio = ceil(STARTING_CULT/active_cults)
+        remaining = STARTING_CULT
+        to_reduce = cult_strengths.index(max(cult_strengths))
+        cult_strengths[to_reduce] -= remaining
+        cult_strengths[cults.index(rel)] += remaining
+        remaining -= remaining
+
+        to_replace = []  # update the array to export to doc
+        for pos in range(len(cults)):
+            to_replace.append(cults[pos])
+            to_replace.append(str(cult_strengths[pos]))
+
+
 def disable_overlapping_armies(target, Facs):
     """
     Removes all armies from faction target which overlap with a force from any other faction
@@ -421,6 +475,15 @@ def disable_overlapping_armies(target, Facs):
         if not overlap:
             new_chs.append(ch)  # only use armies who have NO overlap
     target[1] = new_chs
+
+
+def write_regions():
+    """
+    Writes the new culture ratios to descr_regions
+
+    :return:
+    """
+    d_regions
 
 
 def write(c, f, d):
@@ -451,5 +514,6 @@ assign_settlements(Settlements, Factions)
 assign_chars(Factions)
 disable_overlapping_armies(Factions[-1], Factions[:-1])
 garrisons_to_abandoned()
+update_culture(Factions[:-1])
 update_funds()
 write(Campaign, Factions, Diplomacy)
