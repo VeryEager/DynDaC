@@ -424,6 +424,7 @@ def update_culture(facs):
     :param facs: All factions to update cultures for
     :return:
     """
+    new_cults = []
     for fac in facs:
         facname = facname_from_text(fac[0])
 
@@ -435,7 +436,6 @@ def update_culture(facs):
 
         # Get the current cultures for the capital city & their strengths
         cults = culture_from_name(name_from_text(fac[3][0]))
-        print(cults)
         cult_strengths = cults[1::2]
         cult_strengths = [int(s) for s in cult_strengths]
         cults = cults[0::2]
@@ -453,6 +453,8 @@ def update_culture(facs):
         for pos in range(len(cults)):
             to_replace.append(cults[pos])
             to_replace.append(str(cult_strengths[pos]))
+        new_cults.append(to_replace)
+    return new_cults
 
 
 def disable_overlapping_armies(target, Facs):
@@ -477,13 +479,31 @@ def disable_overlapping_armies(target, Facs):
     target[1] = new_chs
 
 
-def write_regions():
+def write_regions(cults, facs):
     """
     Writes the new culture ratios to descr_regions
 
+    :param facs: Factions to update the capitals for
+    :param cults: new cultures to replace the old cultures
     :return:
     """
-    d_regions
+    descr_regions = open("descr_regions.txt", "a")
+
+    # First split orig file into regions
+    regions = re.split(r"(}\n\s*[a-z|A-Z|_]+|^[a-z|A-Z|_]+)", d_regions)
+
+    # Then for/e actual capital, update the corresponding capital influences
+    for cult, fac in zip(cults, facs):
+        capital = fac[3][0]
+        name = name_from_text(capital)
+        if name != 'North_Enedwaith_Province':  # hardcoded to match the first province. yelch.
+            loc = regions.index("}\n" + name) + 1
+        else:
+            loc = 2
+        regions[loc] = re.sub(r"({[\s|a-z|0-9|_]+)", "{ " + " ".join(cult), regions[loc])
+
+    text = "".join(regions)
+    descr_regions.write(text)
 
 
 def write(c, f, d):
@@ -511,9 +531,10 @@ pixel_gts = pixel_map(m_ground_types)
 # Re-assign starting locations & export
 add_agents("diplomat", Factions[:-1])
 assign_settlements(Settlements, Factions)
+cultures = update_culture(Factions[:-1])
 assign_chars(Factions)
 disable_overlapping_armies(Factions[-1], Factions[:-1])
 garrisons_to_abandoned()
-update_culture(Factions[:-1])
 update_funds()
 write(Campaign, Factions, Diplomacy)
+write_regions(cultures, Factions[:-1])
