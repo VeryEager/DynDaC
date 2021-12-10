@@ -10,6 +10,6 @@ unit		Khandish Raiders				exp 0 armour 0 weapon_lvl 0
 #RARE
 unit		Variag Lancers				exp 0 armour 0 weapon_lvl 0
 unit		Windriders of Khand				exp 0 armour 0 weapon_lvl 0
-unit		Wardlords Kataphract Archers			exp 0 armour 0 weapon_lvl 0
+unit		Warlords Kataphract Archers			exp 0 armour 0 weapon_lvl 0
 #BG
 unit		Variag Nobles				exp 0 armour 0 weapon_lvl 0

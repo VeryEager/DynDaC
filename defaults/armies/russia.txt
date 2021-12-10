@@ -8,5 +8,5 @@ unit		Rozadan Footmen			exp 0 armour 0 weapon_lvl 0
 #RARE
 unit		Ar-Pharazons Faithful		exp 0 armour 0 weapon_lvl 0
 unit		Adunaim Armsmen			exp 0 armour 0 weapon_lvl 0
-#BG			
+#BG
 unit		Naru n'Aru Household Guard			exp 0 armour 0 weapon_lvl 0
