@@ -3,10 +3,13 @@ unit		Lorien Warders				exp 0 armour 0 weapon_lvl 0
 unit		Lorien Archers				exp 0 armour 0 weapon_lvl 0
 unit		Lorien Sentries				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
-unit 		Lorien Lancers				exp 0 armour 0 weapon_lvl 0
-unit		Woodland Horsearchers		exp 0 armour 0 weapon_lvl 0
+unit 		Lorien Scouts				exp 0 armour 0 weapon_lvl 0
+unit		Lothlorien Marchwardens			exp 0 armour 0 weapon_lvl 0
 unit		Gurdhinen					exp 0 armour 0 weapon_lvl 0
+unit		Sentinels of Cerin Amroth			exp 0 armour 0 weapon_lvl 0
 #RARE
 unit 		Galadhrim Archers				exp 0 armour 0 weapon_lvl 0
 unit		Galadhrim Guards		exp 0 armour 0 weapon_lvl 0
 unit		Galadhrim Swordsmen					exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Elbereths Sentinels			exp 0 armour 0 weapon_lvl 0

@@ -1,12 +1,15 @@
 #STANDARD
 unit		Enedwaith Hunters			exp 0 armour 0 weapon_lvl 0
-unit		Eryn Vorn Woodsmen				exp 0 armour 0 weapon_lvl 0
-unit		River Scouts				exp 0 armour 0 weapon_lvl 0
+unit		Enedwaith Clansmen				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
+unit		River Scouts				exp 0 armour 0 weapon_lvl 0
 unit		Greyflood Raiders			exp 0 armour 0 weapon_lvl 0
-unit		Moot Keepers			exp 0 armour 0 weapon_lvl 0
-unit		Angren Raiders			exp 0 armour 0 weapon_lvl 0
 unit		River Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		River Swordsmen			exp 0 armour 0 weapon_lvl 0
 #RARE
+unit		Warchanters			exp 0 armour 0 weapon_lvl 0
+unit		Angren Raiders			exp 0 armour 0 weapon_lvl 0
+unit		Minhiriath Warriors				exp 0 armour 0 weapon_lvl 0
+unit		Moot Keepers				exp 0 armour 0 weapon_lvl 0
+#BG
 unit		Elder Guildsmen				exp 0 armour 0 weapon_lvl 0
-unit		Guardians of Enedwaith				exp 0 armour 0 weapon_lvl 0

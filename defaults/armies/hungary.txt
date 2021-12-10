@@ -1,10 +1,13 @@
 #STANDARD
 unit		Dwarven Labourers			exp 0 armour 0 weapon_lvl 0
-unit		Ered Luin Scouts			exp 0 armour 0 weapon_lvl 0
+unit		Ered Luin Militia			exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
 unit		Ered Luin Pikemen				exp 0 armour 0 weapon_lvl 0
 unit		Firebeard Warriors			exp 0 armour 0 weapon_lvl 0
+unit		Ered Luin Scouts			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Broadbeam Marksmen				exp 0 armour 0 weapon_lvl 0
-unit		Gabilgathol Guard			exp 0 armour 0 weapon_lvl 0
+unit		Longbeard Crossbows				exp 0 armour 0 weapon_lvl 0
+unit		Longbeard Swordsmen			exp 0 armour 0 weapon_lvl 0
+unit		Grimborn Reavers			exp 0 armour 0 weapon_lvl 0
+#BG
 unit		Tumunzahar Nobles				exp 0 armour 0 weapon_lvl 0

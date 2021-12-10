@@ -1,11 +1,12 @@
 #STANDARD
 unit		Azrazair Raiders				exp 0 armour 0 weapon_lvl 0
 unit		Azrazair Archers				exp 0 armour 0 weapon_lvl 0
-unit		Azrazair Warriors				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
-unit		Abrazanim Nardutarik			exp 0 armour 0 weapon_lvl 0
-unit		Beruthiels Rangers			exp 0 armour 0 weapon_lvl 0
+unit		Azrazair Warriors				exp 0 armour 0 weapon_lvl 0
 unit		Abrazanim Nardubawib			exp 0 armour 0 weapon_lvl 0
+unit		Rozadan Footmen			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Naru n'Aru Royal Guard		exp 0 armour 0 weapon_lvl 0
+unit		Ar-Pharazons Faithful		exp 0 armour 0 weapon_lvl 0
 unit		Adunaim Armsmen			exp 0 armour 0 weapon_lvl 0
+#BG			
+unit		Naru n'Aru Household Guard			exp 0 armour 0 weapon_lvl 0

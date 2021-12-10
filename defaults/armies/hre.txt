@@ -2,10 +2,13 @@
 unit		Snaga Skirmishers			exp 0 armour 0 weapon_lvl 0
 unit		Snaga Archers				exp 0 armour 0 weapon_lvl 0
 unit		Goblin Band			exp 0 armour 0 weapon_lvl 0
-unit		Goblin Infantry				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
+unit		Goblin Infantry				exp 0 armour 0 weapon_lvl 0
 unit		Mountain-Orc Hunters			exp 0 armour 0 weapon_lvl 0
-unit		Goblin Bodyguards			exp 0 armour 0 weapon_lvl 0
 unit		Warg Riders    			exp 0 armour 0 weapon_lvl 0
 #RARE
 unit		Mountain Uruks			exp 0 armour 0 weapon_lvl 0
+unit		Uruk Overseers    			exp 0 armour 0 weapon_lvl 0
+unit		Heavy Goblin Archers			exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Goblin Bodyguards			exp 0 armour 0 weapon_lvl 0

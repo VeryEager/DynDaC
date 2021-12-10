@@ -1,9 +1,13 @@
 #STANDARD
 unit		Lindar Bowmen				exp 0 armour 0 weapon_lvl 0
-unit		Lindon Longspears			exp 0 armour 0 weapon_lvl 0
+unit		Lindar Guards				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
 unit		Amanyar Swordmasters		exp 0 armour 0 weapon_lvl 0
-unit		Lindar Guards				exp 0 armour 0 weapon_lvl 0
+unit		Lindon Longspears			exp 0 armour 0 weapon_lvl 0
+unit		Sindar Archers			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Mithlond Nobles				exp 0 armour 0 weapon_lvl 0
+unit		Sindar Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		Sindar Axemen			exp 0 armour 0 weapon_lvl 0
+unit		Noldorin Archers			exp 0 armour 0 weapon_lvl 0
+#BG
 unit		Calaquendi Lords				exp 0 armour 0 weapon_lvl 0

@@ -1,12 +1,15 @@
 #STANDARD
 unit		Angmarim Levies				exp 0 armour 0 weapon_lvl 0
 unit		Hillmen					exp 0 armour 0 weapon_lvl 0
-unit		Rhudaur Pikemen			exp 0 armour 0 weapon_lvl 0
-#UNCOMMON
-unit		Angmarim Infantry					exp 0 armour 0 weapon_lvl 0
 unit		Angmarim Archers					exp 0 armour 0 weapon_lvl 0
-unit		Rhudaur Savages			exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
+unit		Iron Crown Longbowmen			exp 0 armour 0 weapon_lvl 0
+unit		Rhudaur Warriors			exp 0 armour 0 weapon_lvl 0
+unit		Angmarim Infantry					exp 0 armour 0 weapon_lvl 0
 unit		Warg Raiders   				exp 0 armour 0 weapon_lvl 0
 #RARE
 unit		Rebel Barrow Wights     			exp 0 armour 0 weapon_lvl 0
-unit		Rhudaur Huscarles		exp 0 armour 0 weapon_lvl 0
+unit		Northguard			exp 0 armour 0 weapon_lvl 0
+unit		Darkblades			exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Angmar Bodyguards			exp 0 armour 0 weapon_lvl 0

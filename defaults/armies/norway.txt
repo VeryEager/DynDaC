@@ -1,11 +1,12 @@
 #STANDARD
-unit		Dwarven Labourers			exp 0 armour 0 weapon_lvl 0
 unit		Khazad Volunteers			exp 0 armour 0 weapon_lvl 0
-unit		Khazad Sentries				exp 0 armour 0 weapon_lvl 0
 unit		Dwarven Travellers			exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
 unit		Hithaeglir Beast Hunters		exp 0 armour 0 weapon_lvl 0
-unit		Legion Shieldguard			exp 0 armour 0 weapon_lvl 0
+unit		Khazad Sentries				exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Sons of the Fallen			exp 0 armour 0 weapon_lvl 0
+unit		Legion Deeping Guard			exp 0 armour 0 weapon_lvl 0
+unit		Legion Shieldguard			exp 0 armour 0 weapon_lvl 0
 unit		Khazad-dum Guardians		exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Zenith Guard			exp 0 armour 0 weapon_lvl 0

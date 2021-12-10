@@ -8,5 +8,8 @@ unit		Daritai Warriors			exp 0 armour 0 weapon_lvl 0
 unit		Balchoth Spearmen			exp 0 armour 0 weapon_lvl 0
 unit		Arulad Dragonguard			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Loke Rim Bodyguard			exp 0 armour 0 weapon_lvl 0
 unit		Loke-Nar Rim			exp 0 armour 0 weapon_lvl 0
+unit		Loke-Flag Rim			exp 0 armour 0 weapon_lvl 0
+unit		Arulad Dragonriders			exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Loke Rim Bodyguard			exp 0 armour 0 weapon_lvl 0

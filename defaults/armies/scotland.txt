@@ -1,12 +1,14 @@
 #STANDARD
 unit		Northmen Militia				    exp 0 armour 0 weapon_lvl 0
-unit		Northmen Archers			exp 0 armour 0 weapon_lvl 0
+unit		Rivermen				    exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
 unit		Athala Rangers				exp 0 armour 0 weapon_lvl 0
 unit		Dalian Longbowmen				exp 0 armour 0 weapon_lvl 0
 unit		Dalian Swordsmen				exp 0 armour 0 weapon_lvl 0
-unit		Dale Cavalry					exp 0 armour 0 weapon_lvl 0
-unit		Lake-town Pikemen					exp 0 armour 0 weapon_lvl 0
+unit		Rhovanion Gadrauhts			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Royal Guardsmen					exp 0 armour 0 weapon_lvl 0
+unit		Lake-town Pikemen					exp 0 armour 0 weapon_lvl 0
 unit		Hearthguard					exp 0 armour 0 weapon_lvl 0
+unit		Barding Marksmen			exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Royal Guardsmen					exp 0 armour 0 weapon_lvl 0

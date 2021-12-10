@@ -1,10 +1,14 @@
 #STANDARD
-unit		Dol Guldur Host					exp 0 armour 0 weapon_lvl 0
-unit		Dol Guldur Archers				exp 0 armour 0 weapon_lvl 0
+unit		Dol Guldur Scouts				exp 0 armour 0 weapon_lvl 0
 unit		Mirkwood Goblins			exp 0 armour 0 weapon_lvl 0
-unit		Mirkwood Hunters				exp 0 armour 0 weapon_lvl 0
+unit		Dol Goldur Archers				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
-unit		Khamuls Shadow Rangers				exp 0 armour 0 weapon_lvl 0
+unit		Dol Guldur Host					exp 0 armour 0 weapon_lvl 0
+unit		Goblin Stalkers			exp 0 armour 0 weapon_lvl 0
+unit		Warg Marauders			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Castellans of Dol Guldur						exp 0 armour 0 weapon_lvl 0
-unit		Khamuls Shadowknights         		exp 0 armour 0 weapon_lvl 0
+unit		Khamuls Shadow Rangers				exp 0 armour 0 weapon_lvl 0
+unit		Khamuls Shadowguard
+unit		Goblin Striders         		exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Uruk Bodyguard			exp 0 armour 0 weapon_lvl 0

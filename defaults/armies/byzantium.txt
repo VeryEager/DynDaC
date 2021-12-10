@@ -1,13 +1,16 @@
 #STANDARD
 unit		Vineyard Levies			exp 0 armour 0 weapon_lvl 0
-unit		Vineyard Bowmen		exp 0 armour 0 weapon_lvl 0
+unit		Vineyard Bowmen			exp 0 armour 0 weapon_lvl 0
 unit		Thorn Bladesmen			exp 0 armour 0 weapon_lvl 0
 unit		Thorn Crossbowmen			exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
-unit		Athala Rangers		   	exp 0 armour 0 weapon_lvl 0
-unit		Privateer Axemen		exp 0 armour 0 weapon_lvl 0
-unit		Regent Spearguard			exp 0 armour 0 weapon_lvl 0
+unit		Thorn Guard		   	exp 0 armour 0 weapon_lvl 0
+unit		Dorwinion Infantry			exp 0 armour 0 weapon_lvl 0
+unit		Athala Rangers			exp 0 armour 0 weapon_lvl 0
+unit		Thorn Riders			exp 0 armour 0 weapon_lvl 0
 #RARE
-unit		Avari Warriors			exp 0 armour 0 weapon_lvl 0
-unit		Avari Spearmen						exp 0 armour 0 weapon_lvl 0
+unit		Regent Axeguard			exp 0 armour 0 weapon_lvl 0
+unit		Avari Spearmen			exp 0 armour 0 weapon_lvl 0
 unit		Avari Shadows 			exp 0 armour 0 weapon_lvl 0
+#BG
+unit		High Paladins			exp 0 armour 0 weapon_lvl 0

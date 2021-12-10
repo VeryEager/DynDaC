@@ -1,10 +1,14 @@
 #STANDARD
+unit		Woodmen Warriors				exp 0 armour 0 weapon_lvl 0
 unit		Woodmen Trackers				exp 0 armour 0 weapon_lvl 0
+#UNCOMMON
 unit		Beorning Warriors				exp 0 armour 0 weapon_lvl 0
 unit		Beorning Shieldbearers				exp 0 armour 0 weapon_lvl 0
-#UNCOMMON
 unit		Greenwood Foresters				exp 0 armour 0 weapon_lvl 0
-unit		Eotheod Footmen	            exp 0 armour 0 weapon_lvl 0
 unit		Eotheod Longbowmen					exp 0 armour 0 weapon_lvl 0
 #RARE
+unit		Eotheod Footmen	            exp 0 armour 0 weapon_lvl 0
+unit		Eotheod Cavalry					exp 0 armour 0 weapon_lvl 0
+unit		Silvan Marchwardens			exp 0 armour 0 weapon_lvl 0
+#BG
 unit		Skin-Changers				exp 0 armour 0 weapon_lvl 0

@@ -1,9 +1,14 @@
 #STANDARD
 unit		Uruk-hai Raiders			exp 0 armour 0 weapon_lvl 0
 unit		Uruk-hai Archers			exp 0 armour 0 weapon_lvl 0
-unit		Half Orc Spearmen			exp 0 armour 0 weapon_lvl 0
+unit		Orthanc Sentries			exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
-unit		Half Orc Baneguard			exp 0 armour 0 weapon_lvl 0
+unit		Uruk Reavers			exp 0 armour 0 weapon_lvl 0
+unit		Warg Marauders			exp 0 armour 0 weapon_lvl 0
+unit		Half Orc Spearmen			exp 0 armour 0 weapon_lvl 0
 #RARE
 unit		Uruk-hai Infantry			exp 0 armour 0 weapon_lvl 0
+unit		Uruk-hai Pikemen			exp 0 armour 0 weapon_lvl 0
 unit		Berserkers              	exp 0 armour 0 weapon_lvl 0
+#BG
+unit		Uruk-hai Bodyguards			exp 0 armour 0 weapon_lvl 0
