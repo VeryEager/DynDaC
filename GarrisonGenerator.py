@@ -50,22 +50,40 @@ class GarrisonGenerator:
         general = []
         if rand.random() < self.prob_gen[tier_num]:
             general.append(rand.choice(allowed[3], 1)[0])
-            points -= self.costs[2]  # use same cost as a rare
+            points -= self.costs[1]  # use same cost as an Uncommon
         garrison.extend(general)
 
         # First add Rares
-        rares = []
-        while rand.random() < self.prob_rare[tier_num] and not points < self.costs[2]:
-            rares.append(rand.choice(allowed[2], 1)[0])
-            points -= self.costs[2]
-        rares = sorted(rares)
-        garrison.extend(rares)
+        # rares = []
+        # while rand.random() < self.prob_rare[tier_num] and not points < self.costs[2]:
+        #     rares.append(rand.choice(allowed[2], 1)[0])
+        #     points -= self.costs[2]
+        # rares = sorted(rares)
+        # garrison.extend(rares)
+        rare = []
+        strikes = 2
+        while not points < self.costs[2]:
+            if rand.random() < self.prob_rare[tier_num] and strikes > 0:
+                rare.append(rand.choice(allowed[2], 1)[0])
+                points -= self.costs[2]
+            elif strikes == 0:
+                break
+            else:
+                strikes -= 1
+        unc = sorted(rare)
+        garrison.extend(unc)
 
-        # Then add Uncommons
+        # Then add Uncommons, using a 2-strike rule to ensure more are generated
         unc = []
-        while rand.random() < self.prob_rare[tier_num] and not points < self.costs[1]:
-            unc.append(rand.choice(allowed[1], 1)[0])
-            points -= self.costs[1]
+        strikes = 2
+        while not points < self.costs[1]:
+            if rand.random() < self.prob_rare[tier_num] and strikes > 0:
+                unc.append(rand.choice(allowed[1], 1)[0])
+                points -= self.costs[1]
+            elif strikes == 0:
+                break
+            else:
+                strikes -= 1
         unc = sorted(unc)
         garrison.extend(unc)
 
@@ -82,8 +100,8 @@ class GarrisonGenerator:
         self.pts_def = 5  # starting capacity at villages
         self.pts_per = 3  # additional points per settlement level
         self.costs = [1, 2, 3]  # costs for each unit rank
-        self.prob_uncommon = [0.25, 0.5, 0.75, 0.85, 0.9, 0.95]  # for village, town, large town, city, large city, huge city
-        self.prob_rare = [0.1, 0.3, 0.5, 0.7, 0.85, 0.9]
+        self.prob_uncommon = [0.25, 0.4, 0.55, 0.75, 0.775, 0.825]  # for village, town, large town, city, large city, huge city
+        self.prob_rare = [0.125, 0.25, 0.375, 0.55, 0.75, 0.8]
         self.prob_gen = [0.2, 0.4, 0.6, 0.8, 0.9, 1.0]
         self.facnames = []  # loaded in __load_templates_()
         self.templates = []
