@@ -1,7 +1,7 @@
 #STANDARD
 unit		Dol Guldur Scouts				exp 0 armour 0 weapon_lvl 0
 unit		Mirkwood Goblins			exp 0 armour 0 weapon_lvl 0
-unit		Dol Goldur Archers				exp 0 armour 0 weapon_lvl 0
+unit		Dol Guldur Archers				exp 0 armour 0 weapon_lvl 0
 #UNCOMMON
 unit		Dol Guldur Host					exp 0 armour 0 weapon_lvl 0
 unit		Goblin Stalkers			exp 0 armour 0 weapon_lvl 0

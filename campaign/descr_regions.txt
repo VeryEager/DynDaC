@@ -1468,7 +1468,7 @@ Withered_Province
 	5
 	1
 	religions { catholic 45 elven 0 dwarven 35 northmen 10 heretic 10 islam 0 wildmen 0 nomadic 0 orthodox 0 kings 0 }
- Erebor_Province
+Erebor_Province
 	legion: Erebor
 	Erebor
 	moors

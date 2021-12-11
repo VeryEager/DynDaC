@@ -3198,7 +3198,6 @@ script
             console_command surrender_regions russia
             campaign_wait 1
             unfreeze_faction_ai russia
-            end_if
 			console_command add_population Umbar, 1000
             historic_event umbar_start
         end_if
@@ -7467,6 +7466,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements aztecs <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_dunland
             spawn_army
                 faction aztecs
@@ -7502,6 +7502,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements byzantium <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_dorwinion
             spawn_army
                 faction byzantium
@@ -7537,6 +7538,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements denmark <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_da
             spawn_army
                 faction denmark
@@ -7572,6 +7574,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements france <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_isengard
             spawn_army
                 faction france
@@ -7607,6 +7610,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements hre < 2
+			and I_TurnNumber >= 50
             historic_event last_stand_misty
             spawn_army
                 faction hre
@@ -7642,6 +7646,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements hungary <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_eredluin
             spawn_army
                 faction hungary
@@ -7677,6 +7682,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements ireland < 2
+			and I_TurnNumber >= 50
             historic_event last_stand_lorien
             spawn_army
                 faction ireland
@@ -7712,6 +7718,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements khand <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_khand
             spawn_army
                 faction khand
@@ -7747,6 +7754,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements milan <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_rohan
             spawn_army
                 faction milan
@@ -7782,6 +7790,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements mongols < 2
+			and I_TurnNumber >= 50
             historic_event last_stand_woodland
             spawn_army
                 faction mongols
@@ -7817,6 +7826,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements moors < 2
+			and I_TurnNumber >= 50
             historic_event last_stand_erebor
             spawn_army
                 faction moors
@@ -7852,6 +7862,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements normans <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_bree
             spawn_army
                 faction normans
@@ -7887,6 +7898,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements poland <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_dolguldur
             spawn_army
                 faction poland
@@ -7922,6 +7934,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements portugal <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_angmar
             spawn_army
                 faction portugal
@@ -7957,6 +7970,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements gundabad <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_gundabad
             spawn_army
                 faction gundabad
@@ -7992,6 +8006,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements russia < 2
+			and I_TurnNumber >= 50
             historic_event last_stand_umbar
             spawn_army
                 faction russia
@@ -8027,6 +8042,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements saxons <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_mithlond
             spawn_army
                 faction saxons
@@ -8062,6 +8078,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements scotland <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_dale
             spawn_army
                 faction scotland
@@ -8097,6 +8114,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements sicily <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_gondor
             spawn_army
                 faction sicily
@@ -8131,7 +8149,7 @@ script
         if I_LocalFaction spain
             terminate_monitor
         end_if
-        if I_TurnNumber >= 2
+        if I_TurnNumber >= 50
           if I_NumberOfSettlements spain <= 2
 			historic_event last_stand_harad	
             spawn_army
@@ -8169,6 +8187,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements teutonic_order <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_ened
             spawn_army
                 faction teutonic_order
@@ -8204,6 +8223,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements timurids <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_anduin
             spawn_army
                 faction timurids
@@ -8239,6 +8259,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements turks <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_nd
             spawn_army
                 faction turks
@@ -8274,6 +8295,7 @@ script
             terminate_monitor
         end_if
         if I_NumberOfSettlements venice <= 2
+			and I_TurnNumber >= 50
             historic_event last_stand_rhun
             spawn_army
                 faction venice

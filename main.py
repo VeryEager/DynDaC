@@ -5,7 +5,7 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(2)
+rand.seed(24)
 PATH = "campaign/"
 
 # Global Constants
@@ -500,7 +500,7 @@ def write_regions(cults, facs):
             loc = regions.index("}\n" + name) + 1
         else:
             loc = 2
-        regions[loc] = re.sub(r"({[\s|a-z|0-9|_]+)", "{ " + " ".join(cult), regions[loc])
+        regions[loc] = re.sub(r"({[\s|a-z|0-9|_]+)", "{ " + " ".join(cult) + " ", regions[loc])
 
     text = "".join(regions)
     descr_regions.write(text)
@@ -524,7 +524,7 @@ def write(c, f, d):
         text_char = "".join(fac[1])
         descr_strat.write(fac[0]+text_sett+text_char+fac[2])
 
-    descr_strat.write(d)
+    descr_strat.write(";" + d)
 
 
 pixel_gts = pixel_map(m_ground_types)
