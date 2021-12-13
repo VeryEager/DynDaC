@@ -5,7 +5,7 @@ from numpy import random as rand
 from PIL import Image, ImageOps
 
 # Global File Parameters
-rand.seed(24)
+rand.seed(40)
 PATH = "campaign/"
 
 # Global Constants
@@ -389,6 +389,7 @@ def garrisons_to_abandoned():
             if not used:  # if the abandoned settlement is not in use by any faction then we add rebel army
                 template = open("defaults/rebel_army.txt")
                 template = template.read()
+                template = re.sub(r"#FAC#", fac, template)
 
                 tier = tier_from_text(city)
                 new_army = gen.generate_garrisons(fac, tier)
