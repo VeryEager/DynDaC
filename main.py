@@ -1,11 +1,14 @@
 import re
+import time
+
 from math import ceil
 from GarrisonGenerator import GarrisonGenerator
 from numpy import random as rand
 from PIL import Image, ImageOps
+from text_extraction import faction_name_from_strat, character_name_from_strat, settlement_name_from_strat, settlement_tier_from_strat, region_colour_from_name_regions, settlement_culture_from_regions, character_location_from_strat
 
 # Global File Parameters
-rand.seed(40)
+rand.seed(42)
 PATH = "campaign/"
 
 # Global Constants
@@ -122,79 +125,6 @@ def assign_settlements(s, f):
     f[-1].append(remaining_s)
 
 
-def facname_from_text(text):
-    """
-    Parses the name of the faction from descr_strat entry
-
-    :param text: text entry to retrieve the name from
-    :return: string of the faction's internal name
-    """
-    spl = re.split(r"faction\s([a-z|_]+),", text)
-    return spl[1]
-
-
-def charname_from_text(text):
-    """
-    Extracts a character's name from text
-
-    :param text: character entry in descr_strat
-    :return: string of the character's name
-    """
-    spl = re.split(r"\t([A-Z]+[a-z]+),", text)
-    return spl[1]
-
-
-def name_from_text(text):
-    """
-    Parses the name of a region from its descr_strat entry
-
-    :param text: original descr_start text
-    :return: string form of the region's name
-    """
-    region = re.split(r"(\bregion\s(?i)[a-z_]+Province)", text)
-    region = region[1].split()
-    return region[1]
-
-
-def tier_from_text(text):
-    """
-    Parses the tier of a settlement from its descr_strat entry
-
-    :param text: original descr_strat text
-    :return: string form of the settlement tier
-    """
-    settlement = re.split(r"level\s([a-z|_]+)\n", text)
-    return settlement[1]
-
-
-def colour_from_name(name):
-    """
-    Retrieves the colour pf a region from its name via descr_regions
-
-    :param name: name of the province
-    :return: RGB of the province on map_regions
-    """
-    non_legion = r"}\n\s*" + name + "|^" + name  # non-legion regex
-    parsed = re.split(non_legion, d_regions)
-    parsed = re.split(r"([0-9]+\s[0-9]+\s[0-9]+\s)", parsed[1])
-    r, g, b = parsed[1].split()
-    return int(r), int(g), int(b)
-
-
-def culture_from_name(name):
-    """
-    Retrieves the starting cultures from a region via descr_regions
-
-    :param name: name of the region
-    :return: array containing the culture distribution
-    """
-    non_legion = r"}\n\s*" + name + "|^" + name  # non-legion regex
-    parsed = re.split(non_legion, d_regions)
-    parsed = re.split(r"religions\s{\s([a-z|\s|_|[0-9]+)\s}", parsed[1])
-    cults = parsed[1].split()
-    return cults
-
-
 def pixel_map(mp):
     """
     Extracts the pixel values from the TGA file
@@ -233,17 +163,6 @@ def find_settlement_coords(colour, mp):
                     x = indr
                     y = indp
     return x, y
-
-
-def loc_from_text(text):
-    """
-    Extracts the coordinate vector (x,y) from a character's descr_strat entry
-
-    :param text: The text to parse
-    :return:
-    """
-    loc = re.split(r"(x\s[0-9]+,\sy\s[0-9]+)", text)[1]
-    return loc
 
 
 def get_surrounding_tiles(x, y):
@@ -313,12 +232,12 @@ def get_names(fac):
     :param fac: entry for the faction
     :return:
     """
-    name = facname_from_text(fac[0])
+    name = faction_name_from_strat(fac[0])
     possible = open("descr_names.txt", "r")
     possible = possible.read()
     possible = re.split(r"faction:\s" + name + r"[\s]+characters[\s]+([a-z|\s|_]+)women", possible, flags=re.IGNORECASE)
     possible = re.split(r"[\s]+", possible[1])
-    used_names = [charname_from_text(ch) for ch in fac[1]]
+    used_names = [character_name_from_strat(ch) for ch in fac[1]]
     possible = [n for n in possible[:-1] if n not in used_names and n not in fac[2]]
     return possible
 
@@ -352,7 +271,7 @@ def assign_chars(f):
     :return:
     """
     for fac in f[:-1]:
-        capital = find_settlement_coords(colour_from_name(name_from_text(fac[3][0])), pixel_map(m_regions))
+        capital = find_settlement_coords(region_colour_from_name_regions(settlement_name_from_strat(fac[3][0]), d_regions), pixel_map(m_regions))
         new_chars = []
         for ch in fac[1]:
             if "leader," in ch:  # don't need to check availability for leaders; always in a settlement
@@ -379,7 +298,7 @@ def garrisons_to_abandoned():
 
     new_chars = []
     for i, settles in enumerate(OrigSettlements):
-        fac = facname_from_text(Factions[i][0])
+        fac = faction_name_from_strat(Factions[i][0])
         for city in settles:
             used = False
             for fact in Factions[:-1]:
@@ -391,7 +310,7 @@ def garrisons_to_abandoned():
                 template = template.read()
                 template = re.sub(r"#FAC#", fac, template)
 
-                tier = tier_from_text(city)
+                tier = settlement_tier_from_strat(city)
                 new_army = gen.generate_garrisons(fac, tier)
 
                 for unit in new_army:
@@ -399,7 +318,7 @@ def garrisons_to_abandoned():
                 template += "\n"
 
                 # now we update the x, y of the new army
-                pos = find_settlement_coords(colour_from_name(name_from_text(city)), pixel_map(m_regions))
+                pos = find_settlement_coords(region_colour_from_name_regions(settlement_name_from_strat(city), d_regions), pixel_map(m_regions))
                 template = re.sub(r"(x\s[0-9]+,\sy\s[0-9]+)", "x " + str(pos[0]) + ", y " + str(pos[1]), template)
                 new_chars.append(template)
     Factions[-1][1].extend(new_chars)
@@ -427,7 +346,7 @@ def update_culture(facs):
     """
     new_cults = []
     for fac in facs:
-        facname = facname_from_text(fac[0])
+        facname = faction_name_from_strat(fac[0])
 
         # Split at the faction
         sm_factions = open("descr_sm_factions.txt", "r")
@@ -436,7 +355,7 @@ def update_culture(facs):
         rel = rel[1]
 
         # Get the current cultures for the capital city & their strengths
-        cults = culture_from_name(name_from_text(fac[3][0]))
+        cults = settlement_culture_from_regions(settlement_name_from_strat(fac[3][0]), d_regions)
         cult_strengths = cults[1::2]
         cult_strengths = [int(s) for s in cult_strengths]
         cults = cults[0::2]
@@ -471,8 +390,8 @@ def disable_overlapping_armies(target, Facs):
         overlap = False
         for fac in Facs:
             for fch in fac[1]:
-                ch_loc = loc_from_text(ch).strip()
-                fch_loc = loc_from_text(fch).strip()
+                ch_loc = character_location_from_strat(ch).strip()
+                fch_loc = character_location_from_strat(fch).strip()
                 if ch_loc == fch_loc:
                     overlap = True
         if not overlap:
@@ -496,7 +415,7 @@ def write_regions(cults, facs):
     # Then for/e actual capital, update the corresponding capital influences
     for cult, fac in zip(cults, facs):
         capital = fac[3][0]
-        name = name_from_text(capital)
+        name = settlement_name_from_strat(capital)
         if name != 'North_Enedwaith_Province':  # hardcoded to match the first province. yelch.
             loc = regions.index("}\n" + name) + 1
         else:
@@ -528,6 +447,7 @@ def write(c, f, d):
     descr_strat.write(";" + d)
 
 
+start = time.time()
 pixel_gts = pixel_map(m_ground_types)
 # Re-assign starting locations & export
 add_agents("diplomat", Factions[:-1])
@@ -539,3 +459,4 @@ garrisons_to_abandoned()
 update_funds()
 write(Campaign, Factions, Diplomacy)
 write_regions(cultures, Factions[:-1])
+print("EXECUTION TIME: ", round(time.time()-start, 2), "s")
