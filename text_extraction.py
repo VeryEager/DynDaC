@@ -86,3 +86,46 @@ def character_location_from_strat(text):
     """
     loc = re.split(r"(x\s[0-9]+,\sy\s[0-9]+)", text)[1]
     return loc
+
+
+def split_factions_in_strat(text):
+    """
+    Splits the loaded descr_strat file into factions
+
+    :return: Campaign Info, Faction details[], Diplomacy
+    """
+    by_fac = re.split(r"(\bfaction\s[a-z]+)|(\bStandings)", text)
+    by_fac = [s for s in by_fac if s is not None]
+    by_fac_flat = [x[0]+x[1] for x in zip(by_fac[1::2], by_fac[2::2])]
+    return by_fac[0], by_fac_flat[:-1], by_fac[len(by_fac)-1]
+
+
+def split_factions_by_details_strat(faction):
+    """
+    Splits faction details into settlements, characters, and constants
+
+    :param faction:
+    :return: Faction Info, Settlements[], Characters[], Family
+    """
+    strat = re.split(r"(\bsettlement)|(\bcharacter\s)", faction)
+    info = [s for s in strat if s is not None]
+    info = [x[0]+x[1] for x in zip(info[1::2], info[2::2])]
+
+    family = info[-1].split("character_record", 1)  # Save info on family relationships
+    info[-1] = family[0]
+    if len(family) > 1:                                   # To Account for some factions not having family trees
+        family = "character_record" + family[1]
+    else:
+        family = ""
+
+    settlements = [s for s in info if "character" not in s]  # Split into provinces/characters respectively
+    characters = [s for s in info if "settlement" not in s]
+    characters = [s for s in characters if "admiral" not in s]  # also need to drop admirals
+
+    return strat[0], settlements, characters, family
+
+
+def faction_culture_from_sm_factions(sm_factions, facname):
+    rel = re.split(r"faction\s+" + facname + r"\n[a-z|\s|_]+\nreligion\s+([a-z]+)\n", sm_factions)
+    rel = rel[1]
+    return rel

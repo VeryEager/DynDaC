@@ -5,9 +5,17 @@ class Settlement:
     cultures & name.
 
     """
-    def __init__(self):
+    def __init__(self, text):
         self.colour = (0, 0, 0)
         self.name = ""
         self.settlement_location = (0, 0)
         self.cultures = ""
-        self.text = ""
+        self.text = text
+
+    def parse_text(self):
+        """
+        Parses the raw text of the Settlement entry
+
+        :return:
+        """
+        return None
